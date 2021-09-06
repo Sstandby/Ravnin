@@ -1,0 +1,441 @@
+{
+  "General": [
+    {
+      "categoria": "General",
+      "pregunta": "¿Cuántas zonas horarias tiene en Rusia?",
+      "respuesta_correcta": "11",
+      "respuestas": [
+        "8",
+        "7",
+        "14",
+        "11"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿Cuál es el animal nacional de Australia?",
+      "respuesta_correcta": "Canguro",
+      "respuestas": [
+        "Conejo",
+        "Bestia de Tasmania",
+        "Uragutan",
+        "Canguro"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿Cuál es el idioma que tiene más palabras (según su diccionario)?",
+      "respuesta_correcta": "Inglés",
+      "respuestas": [
+        "Aleman",
+        "Español",
+        "Inglés",
+        "Ruso"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿En qué año llegó el hombre a la Luna?",
+      "respuesta_correcta": "1969",
+      "respuestas": [
+        "1969",
+        "1978",
+        "1988",
+        "1996"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿Cuántas franjas tiene la bandera de Estados Unidos?",
+      "respuesta_correcta": "13",
+      "respuestas": [
+        "13",
+        "15",
+        "11",
+        "9"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿Cuál de los siguientes imperios no tenía un idioma escrito?",
+      "respuesta_correcta": "Inca",
+      "respuestas": [
+        "Inca",
+        "Aztecas",
+        "Egipcios",
+        "Romanos"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿Cuál es la flor nacional de Japón?",
+      "respuesta_correcta": "Flor de Cerezo",
+      "respuestas": [
+        "Sakurasou",
+        "Flor de Cerezo",
+        "Sakura",
+        "Tsubaki"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿De qué país se independizó Eslovenia?",
+      "respuesta_correcta": "Yugoslavia",
+      "respuestas": [
+        "Chipre",
+        "Ottawa",
+        "Berlín",
+        "Yugoslavia"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿De qué país se independizó Eslovenia?",
+      "respuesta_correcta": "Yugoslavia",
+      "respuestas": [
+        "Chipre",
+        "Ottawa",
+        "Berlín",
+        "Yugoslavia"
+      ]
+    },
+    {
+      "categoria": "General",
+      "pregunta": "¿En qué año cumplió Mickey Mouse 70 años?",
+      "respuesta_correcta": "1998",
+      "respuestas": [
+        "1998",
+        "2001",
+        "1789",
+        "2011"
+      ]
+    }
+  ],
+  "Geografía": [
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cómo se llamaba Istanbul antes de 1923?",
+      "respuesta_correcta": "Constantinopla",
+      "respuestas": [
+        "Vanuatu",
+        "Santa Lucía",
+        "Tayikistán",
+        "Constantinopla"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es la capital de Canadá?",
+      "respuesta_correcta": "Ottawa",
+      "respuestas": [
+        "Bogotá",
+        "Chipre",
+        "Toronto",
+        "Ottawa"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es el río más largo del mundo?",
+      "respuesta_correcta": "Río Nilo",
+      "respuestas": [
+        "Amazonas",
+        "Misisipi",
+        "Mi piscina",
+        "Río Nilo"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es el país más pequeño del mundo?",
+      "respuesta_correcta": "El Vaticano",
+      "respuestas": [
+        "El salvador",
+        "hawaii",
+        "Mónaco",
+        "El Vaticano"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es la capital de Filipinas?",
+      "respuesta_correcta": "Manila",
+      "respuestas": [
+        "Cebu",
+        "Manila",
+        "Berlín",
+        "Yugoslavia"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿En qué país se encuentra el río Po?",
+      "respuesta_correcta": "Italia",
+      "respuestas": [
+        "Francia",
+        "Italia",
+        "Canada",
+        "EEUU"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿En qué país se encuentra el río Po?",
+      "respuesta_correcta": "El océano Índico",
+      "respuestas": [
+        "El océano Índico.",
+        "Misisipi",
+        "Amazonas",
+        "Rio Amapolas"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es el país más visitado del mundo?",
+      "respuesta_correcta": "Francia",
+      "respuestas": [
+        "Francia",
+        "Italia",
+        "Colombia",
+        "Mexico"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": "¿Cuál es el país del mundo con mayor población?",
+      "respuesta_correcta": "China",
+      "respuestas": [
+        "China",
+        "Japon",
+        "India",
+        "Pakistán"
+      ]
+    },
+    {
+      "categoria": "Geografía",
+      "pregunta": " ¿Entre qué países se encuentra el Estrecho de Bering",
+      "respuesta_correcta": "Estados Unidos y Rusia",
+      "respuestas": [
+        "Estados Unidos y Rusia",
+        "Estados Unidos y Alemania",
+        "Estados Unidos y Pakista",
+        "Estados Unidos y Polo Norte"
+      ]
+    }
+  ],
+  "Arte": [
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Cuál es la obra más famosa de Edvard Munch?",
+      "respuesta_correcta": "El grito",
+      "respuestas": [
+        "El nacimiento de Venus",
+        "La última cena",
+        "La noche estrellada",
+        "El grito"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Qué artista de graffiti famoso nació en Bristol?",
+      "respuesta_correcta": "Banksy",
+      "respuestas": [
+        "Ceroker",
+        "Vhils",
+        "Barth Simpson",
+        "Banksy"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Quién pintó el “Guernica”?",
+      "respuesta_correcta": "Pablo Picasso.",
+      "respuestas": [
+        "Pablo Picasso.",
+        "Leonardo Dicaprio",
+        "Banksy",
+        "Claude Monet"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Con qué nombre firmaba Van Gogh sus obras?",
+      "respuesta_correcta": "Vincent.",
+      "respuestas": [
+        "Vincent.",
+        "V. G.",
+        "Van G.",
+        "V. Gogh"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Quién escribió “Sueño de una noche de verano”?",
+      "respuesta_correcta": "William Shakespeare",
+      "respuestas": [
+        "William Shakespeare",
+        "Pablo Neruda",
+        "Jorge Luis Borges",
+        "Alejandra Pizarnik"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Quién escribió “La colmena”?",
+      "respuesta_correcta": "Camilo José Cela.",
+      "respuestas": [
+        "Camilo José Cela.",
+        "Pablo Neruda",
+        "William Shakespeare",
+        "Alejandra Pizarnik"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Cómo se llama el caballo de Don Quijote de la Mancha?",
+      "respuesta_correcta": "Rocinante",
+      "respuestas": [
+        "Rocinante",
+        "Ravnin",
+        "William",
+        "wini poo"
+      ]
+    },
+    {
+      "categoria": "Arte",
+      "pregunta": "¿Qué pintor noruego pintó “El grito”?",
+      "respuesta_correcta": "Edvard Munch.",
+      "respuestas": [
+        "Van Gogh",
+        "Edvard Munch.",
+        "Christian Krohg",
+        "Harald Sohlberg"
+      ]
+    }
+  ],
+  "Música": [
+        {
+      "categoria": "Música",
+      "pregunta": "¿De dónde es Billie Eilish? ",
+      "respuesta_correcta": "Los Angeles",
+      "respuestas": [
+        "Los Angeles",
+        "hawaii",
+        "New York",
+        "Africa"
+      ]
+    },
+    {
+      "categoria": "Música",
+      "pregunta": "¿Cuántas teclas tiene un piano?",
+      "respuesta_correcta": "88",
+      "respuestas": [
+        "67",
+        "88",
+        "70",
+        "90"
+      ]
+    },
+    {
+      "categoria": "Música",
+      "pregunta": "¿De qué ciudad son originarios los Beatles?",
+      "respuesta_correcta": "Liverpool",
+      "respuestas": [
+        "Inglaterra",
+        "Reino Unido",
+        "Liverpool",
+        "Texas"
+      ]
+    },
+    {
+      "categoria": "Música",
+      "pregunta": "¿Qué famoso dúo musical participó en la banda sonora de la película Tron: Legacy?",
+      "respuesta_correcta": "Daft Punk",
+      "respuestas": [
+        "Daft Punk",
+        "skrillex",
+        "Dimitri Vegas & Like Mike",
+        "David Guetta"
+      ]
+    }
+  ],
+  "Ciencia": [
+    {
+      "categoria": "Ciencia",
+      "pregunta": "¿En qué mes el Sol está más cerca de la Tierra?",
+      "respuesta_correcta": "Diciembre",
+      "respuestas": [
+        "Diciembre",
+        "Marzo",
+        "Octubre",
+        "Febrero"
+      ]
+    },
+    {
+      "categoria": "Ciencia",
+      "pregunta": "¿¿Cuántos elementos tiene la tabla periódica?",
+      "respuesta_correcta": "118",
+      "respuestas": [
+        "118",
+        "113",
+        "100",
+        "89"
+      ]
+    },
+    {
+      "categoria": "Ciencia",
+      "pregunta": "¿Cuál es la velocidad de la luz?",
+      "respuesta_correcta": "300.000 kilómetros por segundo",
+      "respuestas": [
+        "300.000 kilómetros por segundo",
+        "400.000 kilómetros por segundo",
+        "200.000 kilómetros por segundo",
+        "700.000 kilómetros por segundo"
+      ]
+    },
+    {
+      "categoria": "Ciencia",
+      "pregunta": "De los cinco sentidos, ¿cuál es el que se desarrolla primero?",
+      "respuesta_correcta": "El olfato",
+      "respuestas": [
+        "Vista",
+        "audición",
+        "tacto",
+        "El olfato"
+      ]
+    },
+    {
+      "categoria": "Ciencia",
+      "pregunta": "¿Qué elemento está presente en absolutamente todas las moléculas orgánicas?",
+      "respuesta_correcta": "Carbono",
+      "respuestas": [
+        "Estaño",
+        "Silicio",
+        "Estaño",
+        "Carbono"
+      ]
+    },
+    {
+      "categoria": "Ciencia",
+      "pregunta": "¿A partir de qué planta se elabora el tequila?",
+      "respuesta_correcta": "El agave",
+      "respuestas": [
+        "El agave",
+        "Sotol",
+        "Vitis vinifera",
+        "Vitis pulpina"
+      ]
+    },
+    {
+      "categoria": "Ciencia",
+      "pregunta": " ¿Qué ciencia estudia la sangre?",
+      "respuesta_correcta": "hematología",
+      "respuestas": [
+        "hematología",
+        "forense",
+        "oncologia",
+        "cirugia"
+      ]
+    }
+  ]
+}

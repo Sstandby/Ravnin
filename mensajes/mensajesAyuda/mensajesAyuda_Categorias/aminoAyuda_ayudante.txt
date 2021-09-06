@@ -1,0 +1,16 @@
+[BC]𝄰 Creemos entre todos
+[BC]𝄰 Un mundo mejor. ₍ᐢ._.ᐢ₎
+[C]
+[C]𝄰 Chat.
+[C]
+[C][.titulo] [.contenido] [.view]
+[C][.invitar] [.anuncio] [.fijar]
+[C][.clave] [.fondo] [.icon] 
+[C][-kick]
+[C]
+[C]𝄰 Comunidad
+[C]
+[C][.ban] [.strike] [.bloquear]
+[C][.warn] [.desbloquear]
+[C]
+[C]© 𝓑𝔂 𝓢𝓽𝓪𝓷𝓭𝓫𝔂 - 𝓡𝓪𝓿𝓷𝓲𝓷
