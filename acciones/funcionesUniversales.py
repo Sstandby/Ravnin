@@ -37,12 +37,7 @@ correo = credenciales.Usuario.correo
 clave = credenciales.Usuario.clave
 
 admins = [
-    "c0884d27-5f07-4579-92bf-782563080c16",
-    "bb8a21db-3c02-4848-960c-53691b716858",
-    "1085f2b5-e314-4a25-9b7a-9fd67fbfd36d",
-    "0aef6265-e4a0-42e9-9ff9-3b7e348a75f2",
-    "b515fd6b-30a1-410d-9850-da25aa6754ed",
-    "f53a515a-f10e-4578-a0e9-367ad118db7b"
+    "c0884d27-5f07-4579-92bf-782563080c16"
 ]
 
 wikis = {}
