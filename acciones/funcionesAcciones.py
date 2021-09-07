@@ -2087,7 +2087,7 @@ categoriasComandos = [
 ]
 
 acciones = {
-    "-comment": commentUser,
+    #"-comment": commentUser,
     "-info": info,
     "-burbuja": burbuja,
     "-join": join,
@@ -2097,7 +2097,7 @@ acciones = {
     "-gay": gay,
     "-id": id,
     "-biografia": edit_bio,
-    "-args.namename": edit_nick,
+    "-name": edit_nick,
     "-confession": confession,
     "-kill": kill,
     "-hug": hug,
