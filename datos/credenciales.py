@@ -23,5 +23,5 @@ SOFTWARE.
 """
 
 class Usuario:
-	correo = "correodeamino@gmail.com" 
+	correo = "correoamino@gmail"
 	clave = "contraseña"
