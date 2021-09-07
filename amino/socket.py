@@ -11,7 +11,6 @@ from .lib.util import objects
 
 class SocketHandler:
     def __init__(self, client, socket_trace = False, debug = False):
-        if socket_trace: websocket.enableTrace(True)
         self.socket_url = "wss://ws1.narvii.com"
         self.client = client
         self.debug = debug
@@ -24,7 +23,8 @@ class SocketHandler:
         self.socketDelay = 0
         self.socket_trace = socket_trace
         self.socketDelayFetch = 480  # Reconnects every 120 seconds.
-
+        websocket.enableTrace(socket_trace)
+        
     def run_socket(self):
         threading.Thread(target=self.reconnect_handler).start()
         websocket.enableTrace(self.socket_trace)
