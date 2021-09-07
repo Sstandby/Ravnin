@@ -6,7 +6,6 @@ requests==2.25.1
 six==1.15.0
 gTTS==2.2.1
 urllib3>=1.26.4
-websocket-client==0.57.0
 ujson==4.0.2
 bs4==0.0.1
 JSON-minify==0.3.0
