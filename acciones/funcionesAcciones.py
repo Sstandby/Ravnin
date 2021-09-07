@@ -48,7 +48,7 @@ def mostrarAyuda(message, comandoSolicitado):
 
 
 def idiomaTrivia(lenguaje):
-    with open(f'idiomas/trivia/{lenguaje}-trivia.json') as idioma:
+    with open(f'idiomas/trivia/{lenguaje}-trivia.json', encoding="utf8") as idioma:
         data = json.load(idioma)
         lenguaje = data
         return lenguaje
