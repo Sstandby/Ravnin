@@ -11,6 +11,7 @@ from .lib.util import objects
 
 class SocketHandler:
     def __init__(self, client, socket_trace = False, debug = False):
+        # websocket.enableTrace(True)
         self.socket_url = "wss://ws1.narvii.com"
         self.client = client
         self.debug = debug
@@ -18,42 +19,20 @@ class SocketHandler:
         self.headers = None
         self.socket = None
         self.socket_thread = None
-        self.reconnect = True
         self.socket_stop = False
         self.socketDelay = 0
         self.socket_trace = socket_trace
-        self.socketDelayFetch = 480  # Reconnects every 120 seconds.
-        websocket.enableTrace(socket_trace)
-        
-    def run_socket(self):
-        threading.Thread(target=self.reconnect_handler).start()
+        self.socketDelayFetch = 480  # Reconnects every 9 m.
         websocket.enableTrace(self.socket_trace)
 
+    def run_socket(self):
+        threading.Thread(target=self.reconnect_handler).start()
+        
     def reconnect_handler(self):
-        # Made by enchart#3410 thx
-        # Fixed by The_Phoenix#3967
-        # Fixed by enchart again lmao
-        # Fixed by Phoenix one more time lol
         while True:
-            if self.debug:
-                print(f"[socket][reconnect_handler] socketDelay : {self.socketDelay}")
-
-            if self.socketDelay >= self.socketDelayFetch and self.active:
-                if self.debug:
-                    print(f"[socket][reconnect_handler] socketDelay >= {self.socketDelayFetch}, Reconnecting Socket")
-
-                self.close()
-                self.start()
-                self.socketDelay = 0
-
-            self.socketDelay += 5
-
-            if not self.reconnect:
-                if self.debug:
-                    print(f"[socket][reconnect_handler] reconnect is False, breaking")
-                break
-
-            time.sleep(5)
+            self.close()
+            self.start()
+            time.sleep(480)
 
     def on_open(self):
         if self.debug:
@@ -64,10 +43,6 @@ class SocketHandler:
             print("[socket][on_close] Socket Closed")
 
         self.active = False
-
-        if self.reconnect:
-            if self.debug:
-                print("[socket][on_close] reconnect is True, Opening Socket")
 
     def on_ping(self, data):
         if self.debug:
@@ -86,8 +61,8 @@ class SocketHandler:
         self.socket.send(data)
 
     def start(self):
-        if self.debug:
-            print(f"[socket][start] Starting Socket")
+        if self.debug is True:
+            print("[socket][start] Starting Socket")
 
         self.headers = {
             "NDCDEVICEID": self.client.device_id,
@@ -103,18 +78,17 @@ class SocketHandler:
             header = self.headers
         )
 
-        threading.Thread(target = self.socket.run_forever, kwargs = {"ping_interval": 60}).start()
-        self.reconnect = True
+        self.socket_thread = threading.Thread(target = self.socket.run_forever, kwargs = {"ping_interval": 60})
+        self.socket_thread.start()
         self.active = True
 
-        if self.debug:
-            print(f"[socket][start] Socket Started")
+        if self.debug is True:
+            print("[socket][start] Socket Started")
 
     def close(self):
         if self.debug:
             print(f"[socket][close] Closing Socket")
 
-        self.reconnect = False
         self.active = False
         self.socket_stop = True
         try:
