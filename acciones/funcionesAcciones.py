@@ -541,7 +541,7 @@ def kill(args, lenguaje):
     user = args.search_users(args.params)
     if not user: return
 
-    url = f'https://some-random-api.ml/canvas/wasted/?avatar={user.icon[0]}'
+    url = f'https://some-random-api.ml/canvas/wasted/?avatar={user.icon[0]}?key=AxFY2cclzlYWbeOrZXnsHpraT'
     file = upload(url)
     try:
         message = {
@@ -564,7 +564,7 @@ def kill(args, lenguaje):
 
 
 def gay(args, lenguaje):
-    url = f'https://some-random-api.ml/canvas/gay/?avatar={args.author.icon}'
+    url = f'https://some-random-api.ml/canvas/gay/?avatar={args.author.icon}?key=AxFY2cclzlYWbeOrZXnsHpraT'
     file = upload(url)
     num = requests.get(
         'http://2g.be/twitch/randomnumber.php?=defstart=1&defend=109)%')
@@ -1218,7 +1218,7 @@ def pokedex(args, lenguaje):
 
 
 def youtubeComment(args, lenguaje):
-    url = f"https://some-random-api.ml/canvas/youtube-comment?avatar={args.author.icon}&comment={args.params}&username={args.name}"
+    url = f"https://some-random-api.ml/canvas/youtube-comment?avatar={args.author.icon}&comment={args.params}&username={args.name}?key=AxFY2cclzlYWbeOrZXnsHpraT"
     file = upload(url)
     message = {
         'chatId': args.chatId,
@@ -1230,7 +1230,7 @@ def youtubeComment(args, lenguaje):
 
 
 def loli(args, lenguaje):
-    url = f"https://some-random-api.ml/canvas/lolice/?avatar={args.author.icon}"
+    url = f"https://some-random-api.ml/canvas/lolice/?avatar={args.author.icon}?key=AxFY2cclzlYWbeOrZXnsHpraT"
     file = upload(url)
     message = {
         'chatId': args.chatId,
