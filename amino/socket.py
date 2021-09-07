@@ -35,9 +35,24 @@ class SocketHandler:
         # Fixed by enchart again lmao
         # Fixed by Phoenix one more time lol
         while True:
-            
-            self.close()
-            self.start()
+            if self.debug:
+                print(f"[socket][reconnect_handler] socketDelay : {self.socketDelay}")
+
+            if self.socketDelay >= self.socketDelayFetch and self.active:
+                if self.debug:
+                    print(f"[socket][reconnect_handler] socketDelay >= {self.socketDelayFetch}, Reconnecting Socket")
+
+                self.close()
+                self.start()
+                self.socketDelay = 0
+
+            self.socketDelay += 5
+
+            if not self.reconnect:
+                if self.debug:
+                    print(f"[socket][reconnect_handler] reconnect is False, breaking")
+                break
+
             time.sleep(5)
 
     def on_open(self):
@@ -89,6 +104,8 @@ class SocketHandler:
         )
 
         threading.Thread(target = self.socket.run_forever, kwargs = {"ping_interval": 60}).start()
+        self.reconnect = True
+        self.active = True
 
         if self.debug:
             print(f"[socket][start] Socket Started")
@@ -97,6 +114,8 @@ class SocketHandler:
         if self.debug:
             print(f"[socket][close] Closing Socket")
 
+        self.reconnect = False
+        self.active = False
         self.socket_stop = True
         try:
             self.socket.close()
