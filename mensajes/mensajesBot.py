@@ -64,7 +64,8 @@ def mensajeError(error):
 def mensajeAyuda_animales():
     animalesAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_animales.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_animales = animalesAyuda.read()
 
     return aminoAyuda_animales
@@ -72,7 +73,8 @@ def mensajeAyuda_animales():
 def mensajeAyuda_acciones():
     accionesAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_acciones.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_acciones = accionesAyuda.read()
 
     return aminoAyuda_acciones
@@ -80,7 +82,8 @@ def mensajeAyuda_acciones():
 def mensajeAyuda_ayudante():
     animalesAyudante = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_ayudante.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_ayudante = animalesAyudante.read()
 
     return aminoAyuda_ayudante
@@ -88,7 +91,8 @@ def mensajeAyuda_ayudante():
 def mensajeAyuda_entretenimiento():
     entretenimientoAyuda = open(
         "mensajes/mensajesAyuda//mensajesAyuda_Categorias/aminoAyuda_entretenimiento.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_entretenimiento = entretenimientoAyuda.read()
 
     return aminoAyuda_entretenimiento
@@ -97,7 +101,8 @@ def mensajeAyuda_entretenimiento():
 def mensajeAyuda_guion():
     guionAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_guion.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_guion = guionAyuda.read()
 
     return aminoAyuda_guion
@@ -106,7 +111,8 @@ def mensajeAyuda_guion():
 def mensajeAyuda_ravnin():
     ravninAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_Ravnin.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_ravnin = ravninAyuda.read()
 
     return aminoAyuda_ravnin
@@ -115,7 +121,8 @@ def mensajeAyuda_ravnin():
 def mensajeAyuda_invisible():
     virguililaAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_virguilila.txt",
-        "r")
+        "r", 
+        encoding="utf8")
     aminoAyuda_virguilila = virguililaAyuda.read()
 
     return aminoAyuda_virguilila
