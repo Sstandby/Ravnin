@@ -165,9 +165,9 @@ def on_reply_message(data):
                     media = replyMessage["mediaValue"]
                     funcionesMensajes.responder_acciones[command](
                         args, media, replyToMessage, admins)
-                if re.search("—可 Quizz", str(replyMessage)):
-                    funcionesMensajes.trivia(args, replyMessage, idioma,
-                                             mensaje)
+            if re.search("—可 Quizz", str(replyMessage)):
+                funcionesMensajes.trivia(args, replyMessage, idioma,
+                                         mensaje)
 
     delete = Timer(0, reply_message)
     delete.start()
