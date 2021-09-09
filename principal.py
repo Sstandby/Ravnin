@@ -224,7 +224,7 @@ def on_admin_message(data):
                         'chatId':
                         chatId,
                         'message':
-                        "Bot en actualización, !Ningun comando funcionara!"
+                        "Bot en actualización, ¡Ningún comando funcionará!"
                     }
                     subclient.send_message(**message_none)
 
