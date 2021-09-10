@@ -30,7 +30,7 @@ def icon_bot(media,args):
     try:
 
         args.subclient.send_message(args.chatId,
-                               "¡Icon cambiado con exito! uwu")
+                               "¡Icon cambiado con éxito! uwu")
         args.subclient.edit_profile(icon=str(media))
 
     except Exception:
@@ -42,7 +42,7 @@ def fondo_perfil(media,args):
     try:
 
         args.subclient.send_message(args.chatId,
-                               "¡Fondo de perfil cambiado con exito! uwu")
+                               "¡Fondo de perfil cambiado con éxito! uwu")
         args.subclient.edit_profile(backgroundImage=str(media))
 
     except Exception:
@@ -54,7 +54,7 @@ def portada(media,args):
     try:
 
         args.subclient.send_message(args.chatId,
-                               "¡Portada del chat cambiado con exito! uwu")
+                               "¡Portada del chat cambiada con éxito! uwu")
         args.subclient.edit_chat(chatId=args.chatId, icon=str(media))
 
     except Exception:
@@ -67,7 +67,7 @@ def fondo(media,args):
     try:
 
         args.subclient.send_message(args.chatId,
-                               "¡fondo del chat cambiado con exito! uwu")
+                               "¡Fondo del chat cambiado con éxito! uwu")
         args.subclient.edit_chat(chatId=args.chatId,
                             backgroundImage=str(media))
 
@@ -93,7 +93,7 @@ def delete(args, replyToMessage, admins):
 
       if args.profileId in admins:
          args.subclient.delete_message(args.chatId,replyToMessage, False, "Prueba")
-         args.subclient.send_message(args.chatId,"Mensaje borrado con exito! >:3")
+         args.subclient.send_message(args.chatId,"Mensaje borrado con éxito! >:3")
 
 
 def trivia(args,replyMessage,idioma,mensaje):
@@ -134,12 +134,12 @@ def trivia(args,replyMessage,idioma,mensaje):
          if params2 == mensaje:
             args.subclient.send_message(
               args.chatId,
-              f"[C]✧ ¿Eres super dotado?\n\n[C]¡Respondiste correctamente la pregunta; {pregunta}! \n\n[C]R. {mensaje}"
+              f"[C]✧ ¿Eres súper dotado?\n\n[C]¡Respondiste correctamente la pregunta; {pregunta}! \n\n[C]R. {mensaje}"
             )
          else:
             args.subclient.send_message(
               args.chatId,
-              f"[C]✧ ¿Eres super tonto?\n\n[C]¡Respondiste incorrectamente la pregunta; {pregunta}! \n\n[C]Respuesta != {mensaje}")
+              f"[C]✧ ¿Eres tontito?\n\n[C]¡Respondiste incorrectamente la pregunta; {pregunta}! \n\n[C]Respuesta != {mensaje}")
 
 responder_acciones = {
     '.fondo': fondo,
@@ -149,4 +149,4 @@ responder_acciones = {
 	"-delete": delete
 }
 
-casarse = ["Y los declaro burro y burra.", "VIVAN LOS NOVIOOOOOOS!!!!", "QUE VIVAN LOS DESGRACIAAAADOS!!!", "QUE VIVA EL AMARRE.. VIVAAAAA"]
+casarse = ["Y los declaro marido y mujer.", "VIVAN LOS NOVIOOOOOOS!!!!", "QUE VIVAN LOS DESGRACIAAAADOS!!!", "QUE VIVA EL AMARRE.. VIVAAAAA"]
