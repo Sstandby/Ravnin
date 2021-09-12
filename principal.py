@@ -119,7 +119,6 @@ def on_command_text(data):
                         "¡Usaste mal mis comandos y tienes el descaro de volver a usarlos! -n-"
                     })
                     subclient.send_message(**message)
-
             elif command == "-help":
                 comandoParametro = parametros(tmp)
                 if (comandoParametro in funcionesAcciones.acciones) or (
@@ -130,8 +129,14 @@ def on_command_text(data):
                     funcionesAcciones.mostrarAyuda(message, comandoParametro)
                     subclient.send_message(**message)
                 else:
-                    message.update({'message': content.mensajeAyuda})
-                    subclient.send_message(**message)
+                    try:
+                      message.update({'message': content.mensajeAyuda})
+                      subclient.send_message(**message)
+                    except Exception:
+                      message.update({
+                        'message': "¡Cargando comandos, funciones, listas y clases en Ravnin... ¡1s! ... Intenta ejecutar nuevamente este comando."                      })
+                      subclient.send_message(**message)
+                      
 
     comandos = Timer(0, commandos)
     comandos.start()
@@ -235,6 +240,5 @@ def on_admin_message(data):
 if __name__ == "__main__":
     try:
         mensajeLogin()
-        mensajesBot.mensajeBienvenida()
     except KeyboardInterrupt:
         mensajesBot.limpiarPantalla()
