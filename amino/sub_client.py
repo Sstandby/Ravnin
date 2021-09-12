@@ -694,6 +694,45 @@ class SubClient(client.Client):
         if response.status_code != 200: return exceptions.CheckException(json.loads(response.text))
         else: return response.status_code
 
+   def send_content(self, chatId: str, message: str = None, link: str = None, file: BinaryIO):
+        
+        """
+        Send a Image Embed to a Chat.
+        **Parameters**
+        
+        - **message** : Message to be sent
+            - **chatId** : ID of the Chat.
+            - **file** : File to be sent.
+            - **link** : Image link
+            - **message**: Message embed
+        **Returns**
+
+            - **Success** : 200 (int)
+            - **Fail** : :meth:`Exceptions <amino.lib.util.exceptions>`
+        """
+
+        data = {
+            "type": 0,
+            "content": message,
+            "clientRefId": int(timestamp() / 10 % 1000000000),
+            "attachedObject": Null,
+            "extensions": {
+                "linkSnippetList": [{
+                    "link": link,
+                    "mediaType": 100,
+                    "mediaUploadValue": base64.b64encode(file.read()).decode(),
+                    "mediaUploadValueContentType": "image/png"
+                    }]
+                }
+        }
+
+
+        data = json.dumps(data)
+        response = requests.post(f"{self.api}/x{self.comId}/s/chat/thread/{chatId}/message", headers=self.parse_headers(data=data), data=data, proxies=self.proxies, verify=self.certificatePath)
+        if response.status_code != 200: return exceptions.CheckException(json.loads(response.text))
+        else: return response.status_code
+
+
     def send_message(self, chatId: str, message: str = None, messageType: int = 0, file: BinaryIO = None, fileType: str = None, replyTo: str = None, mentionUserIds: list = None, stickerId: str = None, embedId: str = None, embedType: int = None, embedLink: str = None, embedTitle: str = None, embedContent: str = None, embedImage: BinaryIO = None):
         """
         Send a Message to a Chat.
