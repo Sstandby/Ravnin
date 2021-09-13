@@ -694,7 +694,7 @@ class SubClient(client.Client):
         if response.status_code != 200: return exceptions.CheckException(json.loads(response.text))
         else: return response.status_code
 
-    def send_content(self, chatId: str, message: str = None, link: str, file: BinaryIO = None):
+    def send_content(self, chatId: str, message: str = None, link: str = None, file: BinaryIO = None):
 
         """
         Send a Image Embed to a Chat.
