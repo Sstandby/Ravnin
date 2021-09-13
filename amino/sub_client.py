@@ -694,8 +694,8 @@ class SubClient(client.Client):
         if response.status_code != 200: return exceptions.CheckException(json.loads(response.text))
         else: return response.status_code
 
-   def send_content(self, chatId: str, message: str = None, link: str = None, file: BinaryIO):
-        
+    def send_content(self, chatId: str, message: str = None, link: str, file: BinaryIO = None):
+
         """
         Send a Image Embed to a Chat.
         **Parameters**
@@ -710,7 +710,7 @@ class SubClient(client.Client):
             - **Success** : 200 (int)
             - **Fail** : :meth:`Exceptions <amino.lib.util.exceptions>`
         """
-
+        
         data = {
             "type": 0,
             "content": message,
@@ -723,7 +723,7 @@ class SubClient(client.Client):
                     "mediaUploadValue": base64.b64encode(file.read()).decode(),
                     "mediaUploadValueContentType": "image/png"
                     }]
-                }
+            }
         }
 
 
