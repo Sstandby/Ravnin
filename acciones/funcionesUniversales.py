@@ -45,10 +45,12 @@ wikis = {}
 #Cliente Ravnin
 class ravnin:
     __slots__ = ("subclient", "chatId", "profileId", "author", "content",
-                 "messageId", "params", "name", "comId")
+                 "messageId", "params", "name", "comId", "replyToMessage")
 
-    def __init__(self, data, subclient, params):
+    def __init__(self, data, subclient, replyToMessage = None):
         self.subclient = subclient
+        self.admin = admin
+        self.replyToMessage = replyToMessage
         self.chatId = data.message.chatId
         self.profileId = data.message.author.userId
         self.name = data.message.author.nickname
