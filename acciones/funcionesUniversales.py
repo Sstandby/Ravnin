@@ -49,7 +49,7 @@ class ravnin:
 
     def __init__(self, data, subclient, params, replyToMessage = None):
         self.subclient = subclient
-        self.admin = admins
+        self.admins = admins
         self.replyToMessage = replyToMessage
         self.chatId = data.message.chatId
         self.profileId = data.message.author.userId
