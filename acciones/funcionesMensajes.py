@@ -90,10 +90,14 @@ def acepto(media,args):
                                "¡Pusiste el comando mal tontito/a! -w-")
 
 def delete(args, replyToMessage, admins):
+    try:
+	args.subclient.delete_message(args.chatId,replyToMessage, False, "Prueba")
+        args.subclient.send_message(args.chatId,"Mensaje borrado con éxito! >:3")
 
-      if args.profileId in admins:
-         args.subclient.delete_message(args.chatId,replyToMessage, False, "Prueba")
-         args.subclient.send_message(args.chatId,"Mensaje borrado con éxito! >:3")
+    except Exception:
+
+        args.subclient.send_message(args.chatId,
+                               "¡Pusiste el comando mal tontito/a! -w-")
 
 
 def trivia(args,replyMessage,idioma,mensaje):
