@@ -31,10 +31,10 @@ def icon_bot(media,args):
 
         args.subclient.send_message(args.chatId,
                                "¡Icon cambiado con éxito! uwu")
-        args.subclient.edit_profile(icon=str(media))
+        args.subclient.edit_profile(icon=media)
 
-    except Exception:
-
+    except Exception as Error:
+        print(Error)
         args.subclient.send_message(args.chatId,
                                "¡Pusiste el comando mal tontito/a! -w-")
 
@@ -91,11 +91,13 @@ def acepto(media,args):
 
 def delete(args, replyToMessage, admins):
     try:
-	args.subclient.delete_message(args.chatId,replyToMessage, False, "Prueba")
+
+        args.subclient.delete_message(args.chatId,replyToMessage, False, "Prueba")
+
         args.subclient.send_message(args.chatId,"Mensaje borrado con éxito! >:3")
 
     except Exception:
-
+        
         args.subclient.send_message(args.chatId,
                                "¡Pusiste el comando mal tontito/a! -w-")
 
