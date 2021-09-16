@@ -107,19 +107,31 @@ def on_command_text(data):
 
         if activo is True:
             if command in funcionesAcciones.acciones:
-                if data.message.author.userId not in content.lista_negra:
-                    params = parametros(tmp)
-                    if params == "":
-                        params = None
-                    args = ravnin(data, subclient, params)
-                    funcionesAcciones.acciones[command](args, lenguaje)
-                else:
-                    message.update({
-                        'message':
-                        "¡Usaste mal mis comandos y tienes el descaro de volver a usarlos! -n-"
-                    })
-                    subclient.send_message(**message)
+               try:
+               
+                 if data.message.author.userId not in content.lista_negra:
+                     params = parametros(tmp)
+                     if params == "":
+                         params = None
+                     args = ravnin(data, subclient, params)
+                     funcionesAcciones.acciones[command](args, lenguaje)
+                 else:
+                     message.update({
+                         'message':
+                         "¡Usaste mal mis comandos y tienes el descaro de volver a usarlos! -n-"
+                     })
+                     subclient.send_message(**message)
+
+               except Exception as Error:
+                     print(Error)
+                     message.update({
+                       'message': 
+                       "¡Cargando comandos, funciones, listas y clases en Ravnin... ¡1s! ... Intenta ejecutar nuevamente este comando." 
+                     })
+                     subclient.send_message(**message)
+
             elif command == "-help":
+               
                 comandoParametro = parametros(tmp)
                 if (comandoParametro in funcionesAcciones.acciones) or (
                         comandoParametro
@@ -169,7 +181,7 @@ def on_reply_message(data):
                 if command in funcionesMensajes.responder_acciones:
                     media = replyMessage["mediaValue"]
                     funcionesMensajes.responder_acciones[command](
-                        args, media, replyToMessage, admins)
+                        args=args, media=media, replyToMessage=replyToMessage, admins=admins)
             if re.search("—可 Quizz", str(replyMessage)):
                 funcionesMensajes.trivia(args, replyMessage, idioma,
                                          mensaje)
