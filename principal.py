@@ -24,6 +24,7 @@ SOFTWARE.
 
 import re
 import amino
+import time
 from threading import Timer
 from threading import Thread
 from acciones.funcionesUniversales import admins, clienteAmino, wiki, upload, ravnin, mensajeLogin
@@ -248,9 +249,40 @@ def on_admin_message(data):
     admin_on = Timer(0, admin_message)
     admin_on.start()
 
+def join_community():
+
+    community = clienteAmino.get_wall_comments(userId=clienteAmino.userId, sorting="newest", start=0, size=100).json
+    for i in range(len(community)):
+        try:
+
+            community_Link = community[i]["content"]
+            """Invitar = re.search("http://aminoapps.com/invite/", community_Link)
+            if invitar:
+               invitation = client.get_from_code(community_Link).inviteId
+               print("invitar; ", invitation)
+               Id = client.get_from_code(community_Link).path
+               community_Id = Id[1:Id.index("/")]
+               client.join_community(comId=community_Id,invitationId=invitation)
+            """
+            Id = clienteAmino.get_from_code(community_Link).path
+            community_Id = Id[1:Id.index("/")]
+            clienteAmino.join_community(comId=community_Id)
+
+        except Exception:
+            
+            # print(Error)
+            Id = None
+
+def loop():
+    while True:
+       join_community()
+       time.sleep(10.0)
+
 # Principal
 if __name__ == "__main__":
     try:
         mensajeLogin()
+        run=Thread(target=loop)
+        run.start()
     except KeyboardInterrupt:
         mensajesBot.limpiarPantalla()
