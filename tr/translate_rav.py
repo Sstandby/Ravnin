@@ -1,4 +1,3 @@
-
 def tr_rav(lenguaje, dato, **kwarg):
 
     data = {
@@ -132,6 +131,138 @@ def tr_rav(lenguaje, dato, **kwarg):
             "burbuja": "Your chat bubble was successfully changed! :3",
             "chat_fij": "<$¡Anuncio fijado del chat! uwu$>",
             "chat_fij_none": "<$¡Anuncio desfijado del chat! uwu$>",
+        },
+
+        'pt': {
+            "comment": "[C]Comentario enviado. (っ•̀ω•̀)╮ =͟͟͞ 💗\n\n\n[C]Obrigado por usar o\n[C]Nosso serviço de mensagem\n[C]Haha. ",
+            "Id_Amino": f"O id do link é: {kwarg.get('ID')}",
+            "destacar": f"¡Post {kwarg.get('Titulo')} destacado com sucesso! >w<",
+            "join": "Entrei nele -w-",
+            "one_love": f"Tem {kwarg.get('num')}% {kwarg.get('name')} e {kwarg.get('params')} parecem serem bons amigos, ou melhor, quase noivos...",
+            "two_love": f"Tem {kwarg.get('num')}% {kwarg.get('name')} e {kwarg.get('params')} Parecem ser bons amigos, Ou melhor... há quantos anos estão casados?OwO",
+            "three_love": f"Tem {kwarg.get('num')}% {kwarg.get('name')} e {kwarg.get('params')}, provavelmente conhecidos... mas estou segura de que se odeiam, briguem. >.<",
+            "four_loev": f"Tem {kwarg.get('num')}% {kwarg.get('name')} e {kwarg.get('params')}, é igual agua e comida, não se dão... -n-",
+            "purge": "<$Mensagem apagada com sucesso>:3$>",
+            "kick": "<$Usuario rebelde expulsado do chat com sucesso! a proxima vez que voltar te meterei porradas! uwu$>",
+            "comunidad_like": "<$Já coloquei esta comunidade como minha favorita no perfil global$>",
+            "kill": [
+                f"agarrei pela cabeça {kwarg.get('params')}... e zazzzz, te mato enforcado com minha bengala",
+                f"começa agarrando pelos pés {kwarg.get('params')} e o manda pelos ares",
+                f"Chamo um hacker... ele trava a {kwarg.get('params')} >.<",
+                f"Mando um beijo falso para {kwarg.get('params')}... iludido novamente, K.O. x.x",
+                f"Se recorda da sua ex e o mata de tristeza {kwarg.get('params')} u.u",
+                f"começa a o devorar pouco a pouco {kwarg.get('params')}, tem gosto de frango... @-@"
+            ],
+            "gey": f"Teste feito pelo ratin {kwarg.get('rgay')}. ihhhh 6w6",
+            "coin": "OMG; Que sortudo!!!! >w<",
+            "nalgada": [
+                f"{kwarg.get('params')} agarra com força a cabeça de {kwarg.get('params')}",
+                f"{kwarg.get('params')} casa-se com ele, vivem 10 anos felizes e o espanca {kwarg.get('params')} >:3",
+                f"O que está fazendo meu amor? {kwarg.get('params')}? *sobe no seu colo* papai @-@",
+                f"{kwarg.get('params')} Dá uma bicuda em {kwarg.get('params')} e sai correndo o.o",
+            ],
+            "sleep": [
+                f"Vamos dormir juntinhos? {kwarg.get('name')} -w-",
+                f"Zzzz.... O que está fazendo acordado? {kwarg.get('name')}!! Agh -n-",
+                f"Te espero na caminha, {kwarg.get('name')} Vou te encher de beijos -w-"
+                f"Mimindo com meu amado/a {kwarg.get('name')} uwu",
+                f"Te dou um chute dormindo {kwarg.get('name')}! :3"
+            ],
+            "hug": f"<${kwarg.get('name')}$ abraça você com muito amor <${kwarg.get('params')}$>... >w<",
+            "kiss": f"<${kwarg.get('name')}$ Beijou pique kid bengala em <${kwarg.get('params')}$>... >w<",
+            "trivia": "[CB]• - ̗̀ ❛Lista de categoria sobre o trivia.‘﹏!˚ • '\n\n\n*ૢ                         ── lυv мe\n╰► ﹫Geografía\n╰► ﹫Ciencia\n╰► ﹫General\n╰► ﹫Arte\n\n[C]➤ Uso: -trivia Geografía",
+            "casarse": [
+                f"\t\tIglesia Ravnin.\n\n irmãos e irmãs, estamos aqui reunidos para presenciar a união de {kwarg.get('name')} e {kwarg.get('params')}. se alguém é contra... vai se ferrar, a gente não se importa >:)",
+                f"\t\tIglesia Ravnin.\n\n hoje celebramos o santo matrimonio de {kwarg.get('name')} e {kwarg.get('params')}.\n\n aquele que é contra a esta união, vá assistir faustão.",
+                f"\t\tIglesia Ravnin.\n\n Com o poder de la matrix, eu o declaro, casados {kwarg.get('name')} e {kwarg.get('params')}. Pode beijar ao noivo/a",
+                f"\t\tIglesia Ravnin.\n\n desde hoje, o amor entre {kwarg.get('name')} e {kwarg.get('params')}, está sendo abençoado pelo de cima."
+            ],
+            "patada": [
+                f"Te mete um chute e o manda pelos ares {kwarg.get('params')} >:3",
+                f"Brr... Brrrrrr. Soy franshesco virgolini e eu, eu comi a sua primaa {kwarg.get('params')}",
+                f"Dá um chute em suas partes baixas... {kwarg.get('params')} >.<",
+                f"Começa a dar chutes nesse otaku {kwarg.get('params')} -n-'",
+                f"te dou um chute nas partes intimas que o deixa sem filhos {kwarg.get('params')} -n-"
+            ],
+            "desaparecer": [
+                f"{kwarg.get('name')} desaparece como seu pai",
+                f"{kwarg.get('name')} desaparece como flash",
+                f"{kwarg.get('name')} desaparece como furry",
+                f"{kwarg.get('name')} desaparece como {kwarg.get('name')}, jaja sad",
+                f"{kwarg.get('name')} desaparece como fuckboy",
+                f"{kwarg.get('name')} desaparece como fuckgirl",
+                f"{kwarg.get('name')} foi comprar cigarros",
+            ],
+            "cry": [
+                f"{kwarg.get('name')} está chorando... >n<",
+                f"{kwarg.get('name')} suas lagrimas cai de pouco a pouco u.u",
+                f"{kwarg.get('name')} chora igual furry bombado, isso... ja é triste",
+                f"{kwarg.get('name')} começa a sentir mal, vai na esquina, e depois começa a chorar sozinho/a...",
+                f"{kwarg.get('name')} todos seus medos, suas debilidades, seus fracassos... Se passou, mas já não pode mais, e começa a chorar.. u.u",
+                f"{kwarg.get('name')} cai suas lagrimas de felicidade >w<",
+                f"{kwarg.get('name')} está tão roxo, e está tão feliz que começou a chorar.. ?¡Felicidade! OwO",
+            ],
+            "aparece": [
+                f"{kwarg.get('name')} aparece como batman",
+                f"{kwarg.get('name')} aparece como flash",
+                f"{kwarg.get('name')} aparece como furry",
+                f"{kwarg.get('name')} aparece como {kwarg.get('name')}, jaja sad",
+                f"{kwarg.get('name')} aparece como fuckboy",
+                f"{kwarg.get('name')} aparece como fuckgirl",
+                f"{kwarg.get('name')} aparece com 3 filhos furrys, e uma vida de amino user",
+            ],
+            "ship": [
+                f"oi {kwarg.get('name')}, você deveria deveria ter filhos com {kwarg.get('params')} -w-",
+                "O que faz perdendo tempo? hahah, já se comam!",
+                f"Ei {kwarg.get('params')} minha casa esta desocupada, bb.",
+                "Grr. bebê, deixe ela, e venha comigo, te faço ciberbebesbots.",
+                f"{kwarg.get('name')} e {kwarg.get('params')}. já casense. Marquem encontros, se comam, não, não se comam, façam muitoosss filhos.",
+                f"Ñam ñam, você {kwarg.get('name')} e {kwarg.get('params')} foram meus padres uwu",
+                f"{kwarg.get('name')} e {kwarg.get('params')} são muito  fofos para este mundo -w-"
+            ],
+            "sonrojar": [
+                f"{kwarg.get('name')} Começa a ficar vermelho lentamente... >//<",
+                f"A cara de {kwarg.get('name')} começa a ficar roxa ///",
+                f"{kwarg.get('name')} começa a se estressar  e depois fica roxo/a >u<",
+                f"Tapa sua cara de tão roxo que está, {kwarg.get('name')} o///o"
+            ],
+            "saludo": [
+                "Hakuna matata 〜(^∇^〜）", "Holis -w-", "namasté ＼（＠￣∇￣＠）／",
+                "salamu alaykum (︶ω︶)", "Hello!!! (｡^‿^｡)", "konichiwa (●⌒∇⌒●)",
+                "-Beso en las dos mejillas- muak, muak (≧▽≦)",
+                "-Se besan en la boca como en la madre rusia- (´°̥̥̥﹏°̥̥̥ )人(´°̥̥̥ω°̥̥̥｀)",
+                "-Chocan narizes- el aliento de la vida!! (((o(ﾟ▽ﾟ)o)))",
+                "mano po!!", "-Se abrazan- (/□＼*)・゜ "
+            ],
+            "correr": [
+                "Empieza a correr como gil", "Se foi",
+                "se fod.. Digo, se foi correndo para preparar um café>:3",
+                "-c vai lentamente-",
+                "começa a correr super rapido... nada,nada o segura, segue correndo, começa a correr.. é serio, sai de tua casa e vai correr de verdade. -w-",
+                "Soy franshesco Virgo-lini y soy el autok ma rapidko del planita tirr4"
+            ],
+            "vir_kiss": f"{kwarg.get('name')} beijou aproximadamente a {kwarg.get('params')}...",
+            "vir_meter": f"o Deus todo poderoso {kwarg.get('name')} vai o desativar {kwarg.get('params')}...",
+            "vir_lick": f"{kwarg.get('name')} chama a {kwarg.get('params')}...",
+            "vir_kiss": f"{kwarg.get('name')} começa a dar pancadas em {kwarg.get('params')}... >:D",
+            "vir_hit": f"{kwarg.get('name')} baniu do chat a {kwarg.get('params')}...",
+            "leave": f"[C]Valeu por me ter em este chat, mas já tenho que ir descansar, vamos Lee! >w<",
+            "owner_off": "Não é meu dono, Por que está usando isso? -.-'",
+            "owner_error": "<$[C]erro, coloque o comando certo! -w-\n\n[C]Lembre-se de por -help -comando para saber como usa-lo uwu$>",
+            "ban": "<$Usuario banido com sucesso owo'$>",
+            "warn": "<$ Tomou advertencia com sucesso! owo'$>",
+            "invite_chat": "<$Agora eles podem convidar no chat! uwu$>",
+            "invite_chat_none": "<$ Não! Não! pode-se convidar no chat! uwu$>",
+            "chat_view": "<$Agora podem ler! uwu$>",
+            "chat_title": "<$titulo do chat trocado. uwu$>",
+            "block": "<$Usuario bloqueado com sucesso! agora ele vai ver... owo$>",
+            "chat_content": "<$Biografia de chat trocada! uwu$>",
+            "chat_anuncio": "<$Anuncio trocado do chat! uwu$>",
+            "unlock": "<$Usuario desbloqueado com sucesso! Acho que aprendeu a lição owo$>",
+            "strike": "<$Usuario avisado com sucesso! owo$>",
+            "burbuja": "Seu balão de bate-papo foi alterado com sucesso! :3",
+            "chat_fij": "<$Anuncio fixado!$>",
+            "chat_fij_none": "<$ Anuncio retirado! uwu$>",
         },
 
         'en': {
