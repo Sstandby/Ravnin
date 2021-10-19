@@ -64,34 +64,37 @@ def mensajeError(error):
 def mensajeAyuda_animales():
     animalesAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_animales.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_animales = animalesAyuda.read()
 
     return aminoAyuda_animales
 
+
 def mensajeAyuda_acciones():
     accionesAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_acciones.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_acciones = accionesAyuda.read()
 
     return aminoAyuda_acciones
 
+
 def mensajeAyuda_ayudante():
     animalesAyudante = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_ayudante.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_ayudante = animalesAyudante.read()
 
     return aminoAyuda_ayudante
 
+
 def mensajeAyuda_entretenimiento():
     entretenimientoAyuda = open(
         "mensajes/mensajesAyuda//mensajesAyuda_Categorias/aminoAyuda_entretenimiento.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_entretenimiento = entretenimientoAyuda.read()
 
@@ -101,7 +104,7 @@ def mensajeAyuda_entretenimiento():
 def mensajeAyuda_guion():
     guionAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_guion.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_guion = guionAyuda.read()
 
@@ -111,7 +114,7 @@ def mensajeAyuda_guion():
 def mensajeAyuda_ravnin():
     ravninAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_Ravnin.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_ravnin = ravninAyuda.read()
 
@@ -121,7 +124,7 @@ def mensajeAyuda_ravnin():
 def mensajeAyuda_invisible():
     virguililaAyuda = open(
         "mensajes/mensajesAyuda/mensajesAyuda_Categorias/aminoAyuda_virguilila.txt",
-        "r", 
+        "r",
         encoding="utf8")
     aminoAyuda_virguilila = virguililaAyuda.read()
 
@@ -486,6 +489,7 @@ def mensajeAyuda_sacarid():
 [C]
 [CB]Uso: -sacarid http://amino.com/EXAMPLE. """
 
+
 def mensajeAyuda_punto_fondo():
     return """[CB]Fondo
 [C]
@@ -495,12 +499,14 @@ def mensajeAyuda_punto_fondo():
 [C]
 [CB]Uso: .fondo"""
 
+
 def mensajeAyuda_punto_contenido():
     return """[CB]contenido
 [C]
 [C]¡Hoy te enseñare a usar este comando! Lo primero que tienes que hacer es poner .contenido Hola como estas y esto pondra en la biografia del chat Hola como estas, puedes mandar cualquier texto que quieras. (๑•̀ㅂ •́)و✧ 
 [C]
 [CB]Uso: .contenido mensaje"""
+
 
 def mensajeAyuda_punto_view():
     return """[CB]view
@@ -510,12 +516,14 @@ def mensajeAyuda_punto_view():
 [CB]Activar: .view palabra
 [CB]Desactivar: .view"""
 
+
 def mensajeAyuda_punto_anuncio():
     return """[CB]anuncio
 [C]
 [C]¡Hoy te enseñare a usar este comando! Lo primero que tienes que hacer es poner .anuncio Hola como estas y esto pondra un anuncio del chat con Hola como estas, puedes mandar cualquier texto que quieras. (๑•̀ㅂ •́)و✧ 
 [C]
 [CB]Uso: .anuncio mensaje"""
+
 
 def mensajeAyuda_punto_fijar():
     return """[CB]fijar
@@ -525,6 +533,7 @@ def mensajeAyuda_punto_fijar():
 [CB]Activar: .fijar palabra
 [CB]Desactivar: .fijar"""
 
+
 def mensajeAyuda_punto_invitar():
     return """[CB]invitar
 [C]
@@ -533,12 +542,14 @@ def mensajeAyuda_punto_invitar():
 [CB]Activar: .invitar palabra
 [CB]Desactivar: .invitar"""
 
+
 def mensajeAyuda_punto_clave():
     return """[CB].clave
 [C]
 [C]¡Hoy te enseñare a usar este comando! Lo primero que tienes que hacer es poner .clave Hola, y esto pondra palabras claves en el chat. (๑•̀ㅂ •́)و✧ 
 [C]
 [CB]Uso: .clave palabra"""
+
 
 def mensajeAyuda_punto_portada():
     return """[CB]portada
@@ -549,12 +560,14 @@ def mensajeAyuda_punto_portada():
 [C]
 [CB]Uso: .portada"""
 
+
 def mensajeAyuda_punto_ban():
     return """[CB].ban
 [C]
 [C]¡Hoy te enseñare a usar este comando! Lo primero que tienes que hacer es poner .ban link del perfil del usuario = Razon del Baneo, y esto lo baneara de la comunidad. Usalo solo si es necesario y no esta algun lider. ¡Recuerda poner el = con el motivo del baneo, se chico/a e informa! (Este comando no tiene efecto contra el staff) (๑•̀ㅂ •́)و✧ 
 [C]
 [CB]Uso: .ban https://aminoapps/linkdelusuario.com = razon del baneo"""
+
 
 def mensajeAyuda_punto_strike():
     return """[CB].strike
@@ -578,6 +591,7 @@ def mensajeAyuda_punto_titulo():
 [C]¡Hoy te enseñare a usar este comando! Lo primero que tienes que hacer es poner .titulo Holaa como estas, y esto cambiara el titulo del chat a Holaa como estas, puede ser cualquier mensaje o titulo que quieras. (๑•̀ㅂ •́)و✧ 
 [C]
 [CB]Uso: .titulo  mensaje"""
+
 
 def mensajeAyuda_punto_warn():
     return """[CB].warn

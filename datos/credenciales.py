@@ -22,6 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+# Remember to put quotation marks around the password and e-mail address
+
 class Usuario:
-	correo = "correoamino@gmail"
-	clave = "contraseña"
+
+    correo = None # Example: "correo@gmail.com"
+    clave = None # Example: "contraseña"
+    sid = None # Example: "SID=AnsiEXAMPLE......" Use the SID, in case you want to use heroku

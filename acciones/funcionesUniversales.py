@@ -22,7 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-import requests, re
+import requests
+import re
 from datos import credenciales
 from mensajes import mensajesBot
 import amino
@@ -42,12 +43,14 @@ admins = [
 
 wikis = {}
 
-#Cliente Ravnin
+# Cliente Ravnin
+
+
 class ravnin:
     __slots__ = ("subclient", "chatId", "profileId", "author", "content",
                  "messageId", "params", "name", "comId", "admins", "replyToMessage")
 
-    def __init__(self, data, subclient, params, replyToMessage = None):
+    def __init__(self, data, subclient, params, replyToMessage=None):
         self.subclient = subclient
         self.admins = admins
         self.replyToMessage = replyToMessage
@@ -111,8 +114,7 @@ class ravnin:
                 pass
         self.subclient.send_message(
             chatId=self.chatId,
-            message=
-            f"[C]Mi Score de Quizz: <${self.subclient.get_quiz_rankings(quizId=quizzId).profile.highestScore}$> >:3"
+            message=f"[C]Mi Score de Quizz: <${self.subclient.get_quiz_rankings(quizId=quizzId).profile.highestScore}$> >:3"
         )
 
     def search_users(self, nombre=str):
@@ -123,7 +125,7 @@ class ravnin:
         return result
 
 
-#guardar informacion sacada de las wikis (BASE DE DATOS DENTRO DE AMINO WTF)
+# guardar informacion sacada de las wikis (BASE DE DATOS DENTRO DE AMINO WTF)
 
 
 class wiki():
@@ -170,6 +172,7 @@ def wiki_content(ide):
 def mensajeLogin():
     mensajesBot.mensajeAutor()
     clienteAmino.login(correo, clave)
+    clienteAmino.new_headers["NDCAUTH"] = f"sid={clienteAmino.sid}"
 
 
 def pwd(ruta=getcwd()):

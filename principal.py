@@ -44,6 +44,8 @@ def parametros(l):
     return ' '.join(l)
 
 # Funcion de coins al donar
+
+
 @clienteAmino.event('on_chat_tip')
 def on_chat_tiip(data):
     try:
@@ -108,31 +110,31 @@ def on_command_text(data):
 
         if activo is True:
             if command in funcionesAcciones.acciones:
-               try:
-               
-                 if data.message.author.userId not in content.lista_negra:
-                     params = parametros(tmp)
-                     if params == "":
-                         params = None
-                     args = ravnin(data, subclient, params)
-                     funcionesAcciones.acciones[command](args, lenguaje)
-                 else:
-                     message.update({
-                         'message':
-                         "¡Usaste mal mis comandos y tienes el descaro de volver a usarlos! -n-"
-                     })
-                     subclient.send_message(**message)
+                try:
 
-               except Exception as Error:
-                     print(Error)
-                     message.update({
-                       'message': 
-                       "¡Cargando comandos, funciones, listas y clases en Ravnin... ¡1s! ... Intenta ejecutar nuevamente este comando." 
-                     })
-                     subclient.send_message(**message)
+                    if data.message.author.userId not in content.lista_negra:
+                        params = parametros(tmp)
+                        if params == "":
+                            params = None
+                        args = ravnin(data, subclient, params)
+                        funcionesAcciones.acciones[command](args, lenguaje)
+                    else:
+                        message.update({
+                            'message':
+                            "¡Usaste mal mis comandos y tienes el descaro de volver a usarlos! -n-"
+                        })
+                        subclient.send_message(**message)
+
+                except Exception as Error:
+                    print(Error)
+                    message.update({
+                        'message':
+                        "¡Cargando comandos, funciones, listas y clases en Ravnin... ¡1s! ... Intenta ejecutar nuevamente este comando."
+                    })
+                    subclient.send_message(**message)
 
             elif command == "-help":
-               
+
                 comandoParametro = parametros(tmp)
                 if (comandoParametro in funcionesAcciones.acciones) or (
                         comandoParametro
@@ -143,13 +145,12 @@ def on_command_text(data):
                     subclient.send_message(**message)
                 else:
                     try:
-                      message.update({'message': content.mensajeAyuda})
-                      subclient.send_message(**message)
+                        message.update({'message': content.mensajeAyuda})
+                        subclient.send_message(**message)
                     except Exception:
-                      message.update({
-                        'message': "¡Cargando comandos, funciones, listas y clases en Ravnin... ¡1s! ... Intenta ejecutar nuevamente este comando."                      })
-                      subclient.send_message(**message)
-                      
+                        message.update({
+                            'message': "¡Cargando comandos, funciones, listas y clases en Ravnin... ¡1s! ... Intenta ejecutar nuevamente este comando."})
+                        subclient.send_message(**message)
 
     comandos = Timer(0, commandos)
     comandos.start()
@@ -249,9 +250,11 @@ def on_admin_message(data):
     admin_on = Timer(0, admin_message)
     admin_on.start()
 
+
 def join_community():
 
-    community = clienteAmino.get_wall_comments(userId=clienteAmino.userId, sorting="newest", start=0, size=100).json
+    community = clienteAmino.get_wall_comments(
+        userId=clienteAmino.userId, sorting="newest", start=0, size=100).json
     for i in range(len(community)):
         try:
 
@@ -269,20 +272,22 @@ def join_community():
             clienteAmino.join_community(comId=community_Id)
 
         except Exception:
-            
+
             # print(Error)
             Id = None
 
+
 def loop():
     while True:
-       join_community()
-       time.sleep(10.0)
+        join_community()
+        time.sleep(10.0)
+
 
 # Principal
 if __name__ == "__main__":
     try:
         mensajeLogin()
-        run=Thread(target=loop)
+        run = Thread(target=loop)
         run.start()
     except KeyboardInterrupt:
         mensajesBot.limpiarPantalla()

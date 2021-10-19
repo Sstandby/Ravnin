@@ -1,18 +1,14 @@
 """
 MIT License
-
 Copyright (c) 2021 Standby 
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,10 +20,15 @@ SOFTWARE.
 
 import ujson as json
 import unicodedata
-import re, requests, random, urllib.request, urllib.parse
+import re
+import requests
+import random
+import urllib.request
+import urllib.parse
+from tr.translate_rav import tr_rav
 from gtts import gTTS
 from urllib.parse import quote
-from google_trans_new import google_translator
+from fix.google_trans_new import google_translator
 # Archivos
 from acciones.funcionesUniversales import admins, clienteAmino, pwd, upload
 from mensajes import mensajesBot
@@ -48,7 +49,7 @@ def mostrarAyuda(message, comandoSolicitado):
 
 
 def idiomaTrivia(lenguaje):
-    with open(f'idiomas/trivia/{lenguaje}-trivia.json', encoding="utf8") as idioma:
+    with open(f'tr/trivia/{lenguaje}-trivia.json', encoding="utf8") as idioma:
         data = json.load(idioma)
         lenguaje = data
         return lenguaje
@@ -98,11 +99,12 @@ def trivia(args, lenguaje):
     args.subclient.send_message(**message)
 
 
-def commentUser(args, lenguaje):
+def comment_user(args, lenguaje):
     if re.search("=", args.params):
         tmp = re.split("=", args.params)
         user = args.search_users(tmp[0])
-        if not user: return
+        if not user:
+            return
         message = {'message': tmp[1], 'userId': user.userId[0]}
     else:
         message = {'message': args.params, 'userId': args.profileId}
@@ -110,27 +112,24 @@ def commentUser(args, lenguaje):
     message_carga = {
         'chatId':
         args.chatId,
-        'message':
-        "[C]Comentario enviado. (っ•̀ω•̀)╮ =͟͟͞͞ 💗\n\n\n[C]Gracias por usar el\n[C]servicio de mensaje\n[C]Ravnin. (ง •᷄ω•)ว"
+        'message': tr_rav(lenguaje, dato="comment")
     }
 
     args.subclient.send_message(**message_carga)
     args.subclient.comment(**message)
 
 
-def idWiki(args, lenguaje):
+def id_link(args, lenguaje):
     msg_2 = str(args.params)
     messageId = msg_2.replace("http://aminoapps.com/p/", "")
     ide = args.subclient.get_from_code(messageId).objectId
     try:
         args.subclient.send_message(chatId=args.chatId,
-                                    message=f"El ide de esta wiki es: {ide}")
+                                    message=tr_rav(lenguaje, dato="Id_Amino", ID=ide))
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -150,7 +149,7 @@ def destacar(args, lenguaje):
         if args.profileId in admins:
             message_ide = {
                 'chatId': args.chatId,
-                'message': f"¡Post: {titulo} destacado con exito! >w<"
+                'message': tr_rav(lenguaje=lenguaje, dato="destacar", Titulo=titulo)
             }
             args.subclient.send_message(**message_ide)
             args.subclient.feature(time=3, blogId=ide)
@@ -166,9 +165,7 @@ def destacar(args, lenguaje):
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -183,9 +180,7 @@ def playGame(args, lenguaje):
 
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -241,56 +236,53 @@ def confession(args, lenguaje):
 def join(args, lenguaje):
     try:
         args.join_chats()
+        args.subclient.send_message(
+            chatId=args.chatId,
+            message=tr_rav(lenguaje=lenguaje, dato="join"))
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
-def comunidad(args, lenguaje):
-    args.join_community()
-
-
 def love(args, lenguaje):
-    num = requests.get(
-        'http://2g.be/twitch/randomnumber.php?=defstart=1&defend=109)%')
-    response = json.loads(num.text)
-    if int(response) >= 50 and int(response) <= 79:
+    num = random.randiny(0, 100)
+    if num >= 50 and num < 80:
         message = {
             'chatId':
             args.chatId,
-            'message':
-            f"Tienen un {response}% {args.name} and {args.params} parecen ser buenos amigos, a lo mejor en un futuro sean mejores amigos. OwO"
+            'message': tr_rav(lenguaje=lenguaje, dato="one_love", num=num, name=args.name, params=args.params)
         }
-    if int(response) >= 80:
+    if num >= 80:
         message = {
             'chatId':
             args.chatId,
             'message':
-            f"Tienen un {response}% {args.name} and {args.params} parecen ser buenos amigos, a lo mejor son coge amigos... O novios? OwO"
+            tr_rav(lenguaje=lenguaje, dato="two_love",
+                   num=num, name=args.name, params=args.params)
         }
-    if int(response) <= 49 and int(response) >= 20:
+    if num < 50 and num >= 20:
         message = {
             'chatId':
             args.chatId,
             'message':
-            f"Tienen un {response}% {args.name} and {args.params}, probablemente conocidos... Pero lo muy seguro es que se odian, creeme. >.<"
+            tr_rav(lenguaje=lenguaje, dato="tree_love",
+                   num=num, name=args.name, params=args.params)
         }
-    if int(response) <= 20:
+    if num < 20:
         message = {
             'chatId':
             args.chatId,
             'message':
-            f"Tienen un {response}% {args.name} and {args.params} son como la caca y comida, no van.. yny"
+            tr_rav(lenguaje=lenguaje, dato="four_love",
+                   num=num, name=args.name, params=args.params)
         }
     args.subclient.send_message(**message)
 
 
 def siri(args, lenguaje):
-    tts = gTTS(args.params, lang='es')
+    tts = gTTS(args.params, lang=lenguaje)
     file = tts.save('audio.mp3')
 
     try:
@@ -307,43 +299,36 @@ def siri(args, lenguaje):
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
 def everyone(args, lenguaje):
     users = []
-    I = 0
-    while I < 1:
-        people = args.subclient.get_chat_users(args.chatId, size=1090).userId
+    for i in range(0, 1000, 20):
+        people = args.subclient.get_chat_users(
+            args.chatId, start=i, size=1000).userId
         for usersin in people:
             users.append(usersin)
-            print(users)
-        message = {
-            'chatId': args.chatId,
-            'message': f"<$@{args.params}$>",
-            'mentionUserIds': users
-        }
-        args.subclient.send_message(**message)
-        print("send")
-        del users
-        I += 1
+
+    message = {
+        'chatId': args.chatId,
+        'message': f"<$@{args.params}$>",
+        'mentionUserIds': users
+    }
+    args.subclient.send_message(**message)
 
 
 def traductor(args, lenguaje):
     translator = google_translator()
-    translate_text = translator.translate(args.params, lang_tgt='es')
+    translate_text = translator.translate(args.params, lang_tgt=lenguaje)
     try:
         message = {'chatId': args.chatId, 'message': f"<${translate_text}$>"}
         args.subclient.send_message(**message)
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -358,26 +343,7 @@ def anfi(args, lenguaje):
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
-        mensajesBot.mensajeError(error)
-
-
-def coa(args, lenguaje):
-    try:
-        args.subclient.accept_organizer(args.chatId)
-        message = {
-            'chatId': args.chatId,
-            'message': "<$¡De coanfitrion a anfi, yeii! uwu$>"
-        }
-        args.subclient.send_message(**message)
-    except Exception as error:
-        args.subclient.send_message(
-            chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -389,22 +355,20 @@ def comunidadLike(args, lenguaje):
                 'chatId':
                 args.chatId,
                 'message':
-                "<$¡Ya puse esta comunidad como de mis favoritas en mi perfil global, muak! uwu$>"
+                tr_rav(lenguaje=lenguaje, dato="comunidad_like")
             }
             args.subclient.send_message(**message)
         else:
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -417,13 +381,13 @@ def purge(args, lenguaje):
                 args.subclient.delete_message(args.chatId, messageId[x], False)
         message = {
             'chatId': args.chatId,
-            'message': "<$Mensajes borrado con exito. >:3$>"
+            'message': tr_rav(lenguaje=lenguaje, dato="purge")
         }
         args.subclient.send_message(**message)
     else:
         message = {
             'chatId': args.chatId,
-            'message': "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+            'message': tr_rav(lenguaje=lenguaje, dato="owner_off")
         }
         args.subclient.send_messag(**message)
 
@@ -438,19 +402,20 @@ def kick(args, lenguaje):
             'chatId':
             args.chatId,
             'message':
-            "<$¡Usuario rebelde expulsado del chat con exito! La proxima vez que vuelvas te metere mas patadas. Jum. uwu$>"
+            tr_rav(lenguaje=lenguaje, dato="kick")
         }
         args.subclient.send_message(**message)
     else:
         message = {
             'chatId': args.chatId,
-            'message': "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+            'message': tr_rav(lenguaje=lenguaje, dato="owner_off")
         }
         args.subclient.send_messag(**message)
 
 
 def info(args, lenguaje):
-    if args.params == None: args.params = ""
+    if args.params == None:
+        args.params = ""
     user_info = re.search("@", args.params)
     if user_info:
         params = args.params.replace("@", "")
@@ -473,7 +438,7 @@ def info(args, lenguaje):
 ♡̷̷ : : Reputación = {usuario_arrobado.reputation[0]}
 
 ♡̷̷ : : Perfil Global = https://aminoapps.com/u/{global_user}
-	    
+	
 [BC]𝙗𝙞𝙤𝘨𝘳𝘢𝘧𝘪𝘢 ( ꈍᴗꈍ)
 
 ♡̷̷ : : bio = {usuario_arrobado.json[0]["content"]}""",
@@ -495,7 +460,7 @@ def info(args, lenguaje):
 ♡̷̷ : : nivel = {args.author.level}
 ♡̷̷ : : Reputación = {args.author.reputation}
 ♡̷̷ : : Perfil Global = https://aminoapps.com/u/{globalId}
-	    
+	
 [BC]𝙗𝙞𝙤𝘨𝘳𝘢𝘧𝘪𝘢 ( ꈍᴗꈍ)
 
 ♡̷̷ : : bio = {user.json[0]["content"]}""",
@@ -508,15 +473,14 @@ def info(args, lenguaje):
 
 def creditos(args, lenguaje):
     creditos = """[CB]𝓡𝓪𝓿𝓷𝓲𝓷
-[C]	    
-[C]La verdad no sé por donde empezar... Este proyecto ni siquiera comenzó con el nombre Ravnin ni ideas locas por comenzar, mi primer bot comenzó a decir frases (Y ahora ni tiene eso Ravnin, que loco), luego a comentar en muros, y después termino en un proyecto que le di mucho cariño, en donde pude ponerle cada sentimiento de mí a Ravnin, frases, su forma de ser, estoy feliz de haber conocido a cada dueño y sobre todo estoy totalmente agradecido con; Leah, Macias, Elliot, Manzanita, kain, -Google, Teacito, Vanced, Lobito, Mafia, Darwin, Blue. Y a todos ustedes que usan este bot.
-[C]
-[C]¡Muchas gracias!
-[C]Att. Standby"""
+[C]	
+[C]Present Day.. heh... Present Time! HAHAHAHA. BY Standby."""
     message = {
         'chatId': args.chatId,
         'message': f"{creditos}",
-        'replyTo': args.messageId
+        'replyTo': args.messageId,
+        'embedImage': upload("https://i.pinimg.com/564x/3d/42/cb/3d42cbf8f4a312728b7a2f51127e86b7.jpg"),
+        'embedLink': "https://aminoapps.com/u/Standbyy"
     }
     args.subclient.send_message(**message)
 
@@ -530,20 +494,15 @@ def id(args, lenguaje):
 
 
 def kill(args, lenguaje):
-    kill = [
-        f"Le agarra la cabeza {args.params}... Y zaz, lo mata a besitos en el poto",
-        f"¡Empieza agarrarlo de los pies a {args.params} y lo manda por los aires!",
-        f"Agarra un pan y ¡Oh no! no, no.. Suelta ese pan.. Mato a {args.params} >.<"
-        f"Le mando un beso toxico a {args.params}... K.O x.x",
-        f"Le recuerda a la ex y lo mata de tristeza a {args.params} u.u",
-        f"Empieza a comerse de poco a poco a {args.params}, pero a besos.. @-@"
-    ]
+    kill = tr_rav(lenguaje=lenguaje, dato="kill", params=args.params)
     user = args.search_users(args.params)
-    if not user: return
+    if not user:
+        return
 
     url = f'https://some-random-api.ml/canvas/wasted/?avatar={user.icon[0]}?key=AxFY2cclzlYWbeOrZXnsHpraT'
     file = upload(url)
     try:
+
         message = {
             'chatId': args.chatId,
             'embedContent': random.choice(kill),
@@ -555,23 +514,20 @@ def kill(args, lenguaje):
         args.subclient.send_message(**message)
 
     except Exception as error:
+
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
 def gay(args, lenguaje):
     url = f'https://some-random-api.ml/canvas/gay/?avatar={args.author.icon}?key=AxFY2cclzlYWbeOrZXnsHpraT'
     file = upload(url)
-    num = requests.get(
-        'http://2g.be/twitch/randomnumber.php?=defstart=1&defend=109)%')
-    gay = json.loads(num.text)
+    gay = random.randrange(0, 200)
     message = {
         'chatId': args.chatId,
-        'embedContent': f"Eres un {gay} gay. Grr 6w6",
+        'embedContent': tr_rav(lenguaje=lenguaje, dato="gay", rgay=gay),
         'embedTitle': f"{args.name}",
         'file': file,
         'fileType': "image"
@@ -585,7 +541,7 @@ def coin(args, lenguaje):
     with open((random_img), "rb") as file:
         message = {
             'chatId': args.chatId,
-            'embedContent': 'OMG; Que suertudo eres!!! >w<',
+            'embedContent': tr_rav(lenguaje=lenguaje, dato="coin"),
             'embedTitle': "⠀",
             'file': file,
             'fileType': "image"
@@ -600,7 +556,7 @@ def dance(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
@@ -621,17 +577,13 @@ def nalgada(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    nalgada = [
-        f"{args.name} le agarra fuertemente la colita a {args.params} uwu",
-        f"{args.name} agarra su mano y la lleva al otro mundo para llevarla a este... Y darle una tremenda nalgada a {args.params} >:3",
-        f"Que haces mi amooor {args.params}? *Le agarra una nalgita* ve papasito'",
-        f"{args.name} le da una nalgada a {args.params} y se va corriendo o.o",
-    ]
+    nalgada = tr_rav(lenguaje=lenguaje, dato="nalgada",
+                     params=args.params, name=args.name)
     message = {
         'chatId': args.chatId,
         'message': random.choice(nalgada),
@@ -647,18 +599,13 @@ def dormir(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    dormir = [
-        f"Hagamos la mimision, {args.name} -w-",
-        f"Zzzz.... ¡¡Qué haces despertandome, {args.name}!! Agh -n-",
-        f"Te espero en la camita, {args.name} pa' comerte a besos -w-"
-        f"**Mi-mimiendo con mi amado/a {args.name}** uwu",
-        f"¡Una nalgada y a mimir {args.name}! :3"
-    ]
+    dormir = tr_rav(lenguaje=lenguaje, dato="sleep",
+                    params=args.params, name=args.name)
     message = {
         'chatId': args.chatId,
         'message': random.choice(dormir),
@@ -670,12 +617,14 @@ def dormir(args, lenguaje):
 def hug(args, lenguaje):
 
     user = args.search_users(args.params)
-    if not user: return
+    if not user:
+        return
 
     message = {
         'chatId': args.chatId,
         'message':
-        f"<$@{args.name}$> abraza con mucho amor a <${args.params}$>... >w<",
+        tr_rav(lenguaje=lenguaje, dato="hug",
+               params=args.params, name=args.name),
         'mentionUserIds': [args.profileId, user.userId[0]],
         'replyTo': args.messageId
     }
@@ -714,17 +663,15 @@ def kiss(args, lenguaje):
         message = {
             'chatId': args.chatId,
             'message':
-            f"<$@{args.name}$> besó apasionadamente a <${args.params}$>...",
+            tr_rav(lenguaje=lenguaje, dato="kiss",
+                   params=args.params, name=args.name),
             'replyTo': args.messageId
         }
         args.subclient.send_message(**message)
-
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -740,9 +687,7 @@ def speak(args, lenguaje):
     except Exception as error:
         args.subclient.send_message(
             chatId=args.chatId,
-            message=
-            f"<$[C]¡Error, pon bien el comando tontito/a! -w-\n\n[C]Recuerda poner -help -comando para saber como usarlo uwu$>"
-        )
+            message=tr_rav(lenguaje=lenguaje, dato="owner_error"))
         mensajesBot.mensajeError(error)
 
 
@@ -750,7 +695,7 @@ def listaTrivia(args, lenguaje):
     message = {
         'chatId': args.chatId,
         'message':
-        "[CB]• - ̗̀ ❛Esta es la lista de categorias sobre el juego trivia.‘﹏!˚ • '\n\n\n*ૢ                         ── lυv мe\n╰► ﹫Geografía\n╰► ﹫Ciencia\n╰► ﹫General\n╰► ﹫Arte\n\n[C]➤ Uso: -trivia Geografía",
+        tr_rav(lenguaje=lenguaje, dato="trivia"),
         'replyTo': args.messageId
     }
     args.subclient.send_message(**message)
@@ -776,12 +721,8 @@ def strike(args, lenguaje):
 
 
 def casarse(args, lenguaje):
-    casarse = [
-        f"\t\tIglesia Ravnin.\n\n Hermanas y hermanos, estamos aquí reunidos para presenciar la boda de {args.name} y {args.params}. Si alguien se opone... Pues chinga su madre, no nos importa >:)",
-        f"\t\tIglesia Ravnin.\n\n Hoy celebramos el santo matrimonio de {args.name} y {args.params}.\n\nAquel que se oponga a esta boda, caye ahora o vayase a ver netflix.",
-        f"\t\tIglesia Ravnin.\n\n Con el poder de la matrix, yo declaró, casados a {args.name} y {args.params}. Puede besar al novio/a",
-        f"\t\tIglesia Ravnin.\n\n Desde hoy, el amor entre {args.name} y {args.params}, queda bendecido por los de arriba."
-    ]
+    casarse = tr_rav(lenguaje=lenguaje, dato="casarse",
+                     params=args.params, name=args.name)
     message = {
         'chatId': args.chatId,
         'message': random.choice(casarse),
@@ -797,18 +738,12 @@ def patada(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    patada = [
-        f"Le mete una patada y lo manda por los aires a {args.params} >:3",
-        f"Brr... Brrrrrr. Soy franshesco virgolini y yo, te mete una patade de tu de tu vida, {args.params}",
-        f"Le mete una patada en las partes bajas... A {args.params} >.<",
-        f"Le empieza a dar patadas como otaku a {args.params} -n-'",
-        f"Le dio una pantada que lo deja sin hijos a {args.params} yny"
-    ]
+    patada = tr_rav(lenguaje=lenguaje, dato="patada", params=args.params)
     message = {
         'chatId': args.chatId,
         'message': random.choice(patada),
@@ -824,23 +759,15 @@ def desaparece(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    patada = [
-        f"{args.name} desaparece como gil",
-        f"{args.name} desaparece como nekito",
-        f"{args.name} desaparece como furro",
-        f"{args.name} desaparece como {args.name}, jaja k sad",
-        f"{args.name} desaparece como fuckboy",
-        f"{args.name} desaparece como fuckgirl",
-        f"{args.name} se va por unos cigarros",
-    ]
+    desaparece = tr_rav(lenguaje=lenguaje, dato="desaparecer", name=args.name)
     message = {
         'chatId': args.chatId,
-        'message': random.choice(patada),
+        'message': random.choice(desaparece),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -853,20 +780,12 @@ def cry(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    cry = [
-        f"{args.name} empieza a llorar... >n<",
-        f"{args.name} sus lagrimas caen de poco a poco por tanta tristeza u.u",
-        f"{args.name} llora como furro, eso... Ya es triste",
-        f"{args.name} Empieza a sentirse mal, se va a una esquinita, y empieza a llorar solito/a...",
-        f"{args.name} todos sus miedos, sus debilidades, sus fracasos... Se los ahorro, pero ya no puede mas, y empieza a llorar.. u.u",
-        f"{args.name} le caen lagrimas de felicidad >w<",
-        f"{args.name} se pone rojito, y se pone tan feliz que llorar de.. ?¡Felicidad! OwO",
-    ]
+    cry = tr_rav(lenguaje=lenguaje, dato="cry", name=args.name)
     message = {
         'chatId': args.chatId,
         'message': random.choice(cry),
@@ -876,18 +795,10 @@ def cry(args, lenguaje):
 
 
 def aparece(args, lenguaje):
-    patada = [
-        f"{args.name} aparece como gil",
-        f"{args.name} aparece como nekito",
-        f"{args.name} aparece como furro",
-        f"{args.name} aparece como {args.name}, jaja k sad",
-        f"{args.name} aparece como fuckboy",
-        f"{args.name} aparece como fuckgirl",
-        f"{args.name} aparece con 3 hijos, y una vida de gil",
-    ]
+    aparece = tr_rav(lenguaje=lenguaje, dato="aparece", name=args.name)
     message = {
         'chatId': args.chatId,
-        'message': random.choice(patada),
+        'message': random.choice(aparece),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -984,15 +895,8 @@ def anime(args, lenguaje):
 
 
 def ship(args, lenguaje):
-    ship = [
-        f"Oye {args.name}, si tú, deberias tener hijos con {args.params} -w-",
-        "¡Qué haces perdiendo el tiempo, ya comanse!",
-        f"Olvida a {args.params} mi casa esta desocupada, bb.",
-        "Grr. Bebé, olvidala a ella, y ven conmigo, te hago ciberbebesbots.",
-        f"{args.name} y {args.params}. Ya cansense. Si joden, comanse, no, ni comanse, vayan hagan un hijo.",
-        f"Ñam ñam, ojala ustedes tú {args.name} y {args.params} fueran mis padres uwu",
-        f"{args.name} y {args.params} son demasiado  goals para este mundo -w-"
-    ]
+    ship = tr_rav(lenguaje=lenguaje, dato="ship",
+                  name=args.name, params=args.params)
     message = {
         'chatId': args.chatId,
         'message': random.choice(ship),
@@ -1002,12 +906,7 @@ def ship(args, lenguaje):
 
 
 def sonrojar(args, lenguaje):
-    sonrojar = [
-        f"{args.name} Se empezo a sonrojar levemente.. >//<",
-        f"La carita de {args.name} se pone como un tomatito ///",
-        f"{args.name} empieza a estrecerse y a ponerse rojito/a >u<",
-        f"Se tapa la carita de lo sonrojado/a que esta, {args.name} o///o"
-    ]
+    sonrojar = tr_rav(lenguaje=lenguaje, dato="sonrojar", name=args.name)
     message = {
         'chatId': args.chatId,
         'message': random.choice(sonrojar),
@@ -1023,7 +922,7 @@ def clorox(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
@@ -1037,7 +936,7 @@ def esquivar(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
@@ -1051,19 +950,12 @@ def saludo(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    saludo = [
-        "Hakuna matata 〜(^∇^〜）", "Holis -w-", "namasté ＼（＠￣∇￣＠）／",
-        "salamu alaykum (︶ω︶)", "Hello!!! (｡^‿^｡)", "konichiwa (●⌒∇⌒●)",
-        "-Beso en las dos mejillas- muak, muak (*≧▽≦)",
-        "-Se besan en la boca como en la madre rusia- (*´°̥̥̥̥̥̥̥̥﹏°̥̥̥̥̥̥̥̥ )人(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)",
-        "-Chocan narizes- el aliento de la vida!! (((o(*ﾟ▽ﾟ*)o)))",
-        "mano po!!", "-Se abrazan- (/□＼*)・゜ "
-    ]
+    saludo = tr_rav(lenguaje=lenguaje, dato="saludo", name=args.name)
     message = {
         'chatId': args.chatId,
         'message': random.choice(saludo),
@@ -1079,7 +971,7 @@ def posar(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
@@ -1093,18 +985,12 @@ def correr(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
         args.subclient.send_message(**message_imagen)
-    correr = [
-        "Empieza a correr como gil", "Se fue",
-        "Se corr.. Digo, se fue corriendo a por un cafesito>:3",
-        "-c va lentamente-",
-        "Empieza a correr super rapido... Nadie, lo detiene, sigue corriendo,empieza a correr.. Ya enserio, sal de tu casa y ve a correr de verdad. -w-",
-        "Soy franshesco Virgo-lini y soy el autok ma rapidko del planita tirr4"
-    ]
+    correr = tr_rav(lenguaje=lenguaje, dato="correr")
     message = {
         'chatId': args.chatId,
         'message': random.choice(correr),
@@ -1188,7 +1074,7 @@ def pokedex(args, lenguaje):
     𖥻  gender: {gender}
     —  egg_groups: {egg_groups}
 
-[CB]⿻ 𝘀𝘁𝗮𝘁𝘀 ഒ 
+[CB]⿻ 𝘀𝘁𝗮𝘁𝘀 ഒ
 
     —  hp: {stats["hp"]}
     𖥻  attack: {stats["attack"]}
@@ -1222,7 +1108,7 @@ def youtubeComment(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "gif"
     }
@@ -1234,7 +1120,7 @@ def loli(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1248,7 +1134,7 @@ def wink(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "gif"
     }
@@ -1262,7 +1148,7 @@ def hug_hug(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "gif"
     }
@@ -1273,7 +1159,7 @@ def background(args, lenguaje):
     file = upload(args.subclient.get_chat_thread(args.chatId).backgroundImage)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1287,7 +1173,7 @@ def pat(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "gif"
     }
@@ -1301,13 +1187,15 @@ def facePalm(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "gif"
     }
     args.subclient.send_message(**message)
 
 # Animales
+
+
 def panda(args, lenguaje):
     response = requests.get('https://some-random-api.ml/img/panda')
     json_data = json.loads(response.text)
@@ -1315,7 +1203,7 @@ def panda(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1329,7 +1217,7 @@ def redPanda(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1343,7 +1231,7 @@ def fox(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1357,7 +1245,7 @@ def dog(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1371,7 +1259,7 @@ def cat(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1385,7 +1273,7 @@ def racoon(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1399,7 +1287,7 @@ def birb(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1413,7 +1301,7 @@ def koala(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1427,7 +1315,7 @@ def kangaroo(args, lenguaje):
     file = upload(url)
     message = {
         'chatId': args.chatId,
-        'message':...,
+        'message': ...,
         'file': file,
         'fileType': "image"
     }
@@ -1443,7 +1331,10 @@ def chat(args, lenguaje):
     link = f"https://api.deltaa.me/chatbot?message={quote(args.params)}&gender=Female"
     response = requests.get(link)
     json_data = json.loads(response.text)
-    chatbot = translator.translate(json_data["message"], lang_tgt='es')
+    if lenguaje == "en":
+        chatbot = json_data["message"]
+    else:
+        chatbot = translator.translate(json_data["message"], lang_tgt=lenguaje)
     message = {
         'chatId': args.chatId,
         'message': f"{chatbot}",
@@ -1491,7 +1382,8 @@ def virguilila_kiss(args, lenguaje):
     message = {
         'chatId': args.chatId,
         'message':
-        f"<$@{args.name}$> besó apasionadamente a  <${args.params}$>...",
+        tr_rav(lenguaje=lenguaje, dato="vir_kiss",
+               name=args.name, params=args.params),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -1500,7 +1392,7 @@ def virguilila_kiss(args, lenguaje):
 def virguilila_ban(args, lenguaje):
     message = {
         'chatId': args.chatId,
-        'message': f"{args.name} baneó del chat a {args.params}...",
+        'message': tr_rav(lenguaje=lenguaje, dato="vir_ban", name=args.name, params=args.params),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -1510,7 +1402,8 @@ def virguilila_meter(args, lenguaje):
     message = {
         'chatId': args.chatId,
         'message':
-        f"el Dios todo poderoso {args.name} va a desactivarme metiendome un {args.params}...",
+        tr_rav(lenguaje=lenguaje, dato="vir_meter",
+               name=args.name, params=args.params),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -1519,7 +1412,7 @@ def virguilila_meter(args, lenguaje):
 def virguilila_lick(args, lenguaje):
     message = {
         'chatId': args.chatId,
-        'message': f"{args.name} lame a {args.params}... >.<",
+        'message': tr_rav(lenguaje=lenguaje, dato="vir_lick", name=args.name, params=args.params),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -1532,7 +1425,7 @@ def virguilila_hit(args, lenguaje):
     with open((file), "rb") as file:
         message_imagen = {
             'chatId': args.chatId,
-            'message':...,
+            'message': ...,
             'file': file,
             'fileType': "gif"
         }
@@ -1541,7 +1434,8 @@ def virguilila_hit(args, lenguaje):
     message = {
         'chatId': args.chatId,
         'message':
-        f"{args.name} empieza a darle puñetazos  {args.params}... >:D",
+        tr_rav(lenguaje=lenguaje, dato="vir_hit",
+               name=args.name, params=args.params),
         'messageType': 109
     }
     args.subclient.send_message(**message)
@@ -1565,14 +1459,15 @@ def leave(args, lenguaje):
             'chatId':
             args.chatId,
             'message':
-            "[C]¡Gracias por tenerme en este chat, pero ya me tengo que ir a descansar! >w<"
+            tr_rav(lenguaje=lenguaje, dato="vir_leave",
+                   name=args.name, params=args.params)
         }
         args.subclient.send_message(**message_leave)
         args.subclient.leave_chat(**message)
     else:
         message = {
             'chatId': args.chatId,
-            'message': "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+            'message': tr_rav(lenguaje=lenguaje, dato="owner_off")
         }
         args.subclient.send_messag(**message)
 
@@ -1584,7 +1479,7 @@ def edit_nick(args, lenguaje):
     else:
         message = {
             'chatId': args.chatId,
-            'message': "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+            'message': tr_rav(lenguaje=lenguaje, dato="owner_off")
         }
         args.subclient.send_messag(**message)
 
@@ -1611,7 +1506,7 @@ def ban(args, lenguaje):
                         args.subclient.ban(**ban)
                         message = {
                             'chatId': args.chatId,
-                            'message': "<$¡Usuario con ban con exito! owo'$>"
+                            'message': tr_rav(lenguaje=lenguaje, dato="ban"),
                         }
                         args.subclient.send_messag(**message)
             else:
@@ -1624,7 +1519,7 @@ def ban(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1662,7 +1557,7 @@ def warn(args, lenguaje):
                             'chatId':
                             args.chatId,
                             'message':
-                            "<$¡Usuario con advertencia con exito! owo'$>"
+                            tr_rav(lenguaje=lenguaje, dato="warn")
                         }
                         args.subclient.send_messag(**message)
             else:
@@ -1675,7 +1570,7 @@ def warn(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1715,7 +1610,7 @@ def strike_user(args, lenguaje):
                         args.subclient.strike(**strike)
                         message = {
                             'chatId': args.chatId,
-                            'message': "<$¡Usuario con falta con exito! owo'$>"
+                            'message': tr_rav(lenguaje=lenguaje, dato="strike")
                         }
                         args.subclient.send_messag(**message)
             else:
@@ -1728,7 +1623,7 @@ def strike_user(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1752,7 +1647,7 @@ def bloquear(args, lenguaje):
                 user = args.subclient.get_from_code(tmp).objectId
                 message = {
                     'chatId': args.chatId,
-                    'message': "<$¡Usuario bloqueado con exito! owo'$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="block")
                 }
                 args.subclient.send_message(**message)
                 args.subclient.block(userId=user)
@@ -1766,7 +1661,7 @@ def bloquear(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_message(**message)
 
@@ -1790,7 +1685,7 @@ def desbloquear(args, lenguaje):
                 user = args.subclient.get_from_code(tmp).objectId
                 message = {
                     'chatId': args.chatId,
-                    'message': "<$¡Usuario desbloqueado con exito! >:3$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="unlock")
                 }
                 args.subclient.send_message(**message)
                 args.subclient.unblock(userId=user)
@@ -1804,7 +1699,7 @@ def desbloquear(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1825,7 +1720,7 @@ def edit_chat_view(args, lenguaje):
             if args.params is not None:
                 message_verdadero = {
                     'chatId': args.chatId,
-                    'message': "<$¡Ahora nadie puede leer el chat! uwu$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="chat_view")
                 }
                 args.subclient.send_message(**message_verdadero)
             if args.params is None:
@@ -1842,7 +1737,7 @@ def edit_chat_view(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1864,14 +1759,14 @@ def edit_chat_content(args, lenguaje):
             args.subclient.edit_chat(**chat)
             message = {
                 'chatId': args.chatId,
-                'message': "<$¡Contenido del chat cambiado! uwu$>"
+                'message': tr_rav(lenguaje=lenguaje, dato="chat_content")
             }
             args.subclient.send_message(**message)
         else:
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1893,7 +1788,7 @@ def edit_chat_clave(args, lenguaje):
             args.subclient.edit_chat(**chat)
             message = {
                 'chatId': args.chatId,
-                'message': "<$¡Clave cambiado de chat cambiado! uwu$>"
+                'message': tr_rav(lenguaje=lenguaje, dato="chat_key")
             }
             args.subclient.send_message(**message)
 
@@ -1901,7 +1796,7 @@ def edit_chat_clave(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1925,7 +1820,7 @@ def edit_chat_anuncio(args, lenguaje):
             args.subclient.edit_chat(**chat)
             message = {
                 'chatId': args.chatId,
-                'message': "<$¡Anuncio cambiado de chat cambiado! uwu$>"
+                'message': tr_rav(lenguaje=lenguaje, dato="chat_announcement")
             }
             args.subclient.send_message(**message)
 
@@ -1933,7 +1828,7 @@ def edit_chat_anuncio(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1954,13 +1849,13 @@ def edit_chat_pinAnnouncement(args, lenguaje):
             if args.params is not None:
                 message_verdadero = {
                     'chatId': args.chatId,
-                    'message': "<$¡Anuncio fijado del chat! uwu$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="chat_fij")
                 }
                 args.subclient.send_message(**message_verdadero)
             if args.params is None:
                 message_falso = {
                     'chatId': args.chatId,
-                    'message': "<$¡Anuncio desfijado del chat! uwu$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="chat_fij_none")
                 }
                 args.subclient.send_message(**message_falso)
             chat = {'chatId': args.chatId, 'pinAnnouncement': args.params}
@@ -1970,7 +1865,7 @@ def edit_chat_pinAnnouncement(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -1991,13 +1886,13 @@ def edit_chat_canInvite(args, lenguaje):
             if args.params is not None:
                 message_verdadero = {
                     'chatId': args.chatId,
-                    'message': "<$¡Ahora pueden invitar en el chat! uwu$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="invite_chat")
                 }
                 args.subclient.send_message(**message_verdadero)
             if args.params is None:
                 message_falso = {
                     'chatId': args.chatId,
-                    'message': "<$¡Ahora nadie puede invitar en el chat! uwu$>"
+                    'message': tr_rav(lenguaje=lenguaje, dato="invite_chat_none")
                 }
                 args.subclient.send_message(**message_falso)
             chat = {'chatId': args.chatId, 'canInvite': args.params}
@@ -2007,7 +1902,7 @@ def edit_chat_canInvite(args, lenguaje):
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -2029,14 +1924,14 @@ def edit_chat_title(args, lenguaje):
             args.subclient.edit_chat(**chat)
             message = {
                 'chatId': args.chatId,
-                'message': "<$¡Titulo cambiado de chat cambiado! uwu$>"
+                'message': tr_rav(lenguaje=lenguaje, dato="chat_title")
             }
             args.subclient.send_message(**message)
         else:
             message = {
                 'chatId': args.chatId,
                 'message':
-                "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+                tr_rav(lenguaje=lenguaje, dato="owner_off")
             }
             args.subclient.send_messag(**message)
 
@@ -2057,13 +1952,13 @@ def burbuja(args, lenguaje):
         args.subclient.edit_profile(args.comId, message_buble)
         message = {
             'chatId': args.chatId,
-            'message': "¡Tu burbuja de chat fue cambiada con exito! :3"
+            'message': tr_rav(lenguaje=lenguaje, dato="bubble")
         }
         args.subclient.send_message(**message)
     else:
         message = {
             'chatId': args.chatId,
-            'message': "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+            'message': tr_rav(lenguaje=lenguaje, dato="owner_off")
         }
         args.subclient.send_messag(**message)
 
@@ -2075,7 +1970,7 @@ def edit_bio(args, lenguaje):
     else:
         message = {
             'chatId': args.chatId,
-            'message': "Ño eres mi dueño, ¿Qué haces usando este comando? -.-'"
+            'message': tr_rav(lenguaje=lenguaje, dato="owner_off")
         }
         args.subclient.send_messag(**message)
 
@@ -2087,12 +1982,12 @@ categoriasComandos = [
 ]
 
 acciones = {
-    #"-comment": commentUser,
+    "-comment": comment_user,
     "-info": info,
     "-burbuja": burbuja,
     "-join": join,
     "-desaparece": desaparece,
-    "-wiki": idWiki,
+    "-link": id_link,
     "-loli": loli,
     "-gay": gay,
     "-id": id,
@@ -2119,7 +2014,6 @@ acciones = {
     "-pat": pat,
     "-patada": patada,
     "-ship": ship,
-    "-coa": coa,
     "-anfi": anfi,
     "-sonrojar": sonrojar,
     "-correr": correr,
@@ -2145,7 +2039,6 @@ acciones = {
     "-dance": dance,
     "-coin": coin,
     "-aparece": aparece,
-    "-comunidad": comunidad,
     "-quizz": playGame,
     "-speak": speak,
     "-strike": strike,
@@ -2157,7 +2050,7 @@ acciones = {
     "-creditos": creditos,
     "-youtubeComment": youtubeComment,
     "-everyone": everyone,
-    #"-youtube": youtube,
+    # "-youtube": youtube,
     "-dog": dog,
     "~panda": panda,
     "~hug": hug_hug,
@@ -2167,7 +2060,7 @@ acciones = {
     "~speak": speak_invicible,
     "~kiss": virguilila_kiss,
     "~ban": virguilila_ban,
-    #"~meter": virguilila_meter,
+    # "~meter": virguilila_meter,
     "~lick": virguilila_lick,
     "~hit": virguilila_hit,
     "~strike": virguilila_strike,
