@@ -28,4 +28,4 @@ class Usuario:
 
     correo = None # Example: "correo@gmail.com"
     clave = None # Example: "contraseña"
-    sid = None # Example: "SID=AnsiEXAMPLE......" Use the SID, in case you want to use heroku
+    sid = None # Example: "AnsiEXAMPLE......" Use the SID, in case you want to use heroku

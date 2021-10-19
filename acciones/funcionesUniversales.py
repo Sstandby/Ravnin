@@ -36,7 +36,7 @@ clienteAmino = amino.Client()
 
 correo = credenciales.Usuario.correo
 clave = credenciales.Usuario.clave
-
+_sid = credenciales.Usuario.sid
 admins = [
     "c0884d27-5f07-4579-92bf-782563080c16"
 ]
@@ -51,6 +51,7 @@ class ravnin:
                  "messageId", "params", "name", "comId", "admins", "replyToMessage")
 
     def __init__(self, data, subclient, params, replyToMessage=None):
+       
         self.subclient = subclient
         self.admins = admins
         self.replyToMessage = replyToMessage
@@ -171,8 +172,11 @@ def wiki_content(ide):
 
 def mensajeLogin():
     mensajesBot.mensajeAutor()
-    clienteAmino.login(correo, clave)
-    clienteAmino.new_headers["NDCAUTH"] = f"sid={clienteAmino.sid}"
+    if _sid != None:
+       clienteAmino.login_sid(_sid)
+    else:
+       clienteAmino.login(correo, clave)
+       clienteAmino.new_headers["NDCAUTH"] = f"sid={clienteAmino.sid}"
 
 
 def pwd(ruta=getcwd()):
