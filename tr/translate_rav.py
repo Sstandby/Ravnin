@@ -36,8 +36,8 @@ def tr_rav(lenguaje, dato, **kwarg):
                 f"Mi-mimiendo con mi amado/a {kwarg.get('name')} uwu",
                 f"¡Una nalgada y a mimir {kwarg.get('name')}! :3"
             ],
-            "hug": f"<${kwarg.get('name')}$ abraza con mucho amor a <${kwarg.get('params')}$>... >w<",
-            "kiss": f"<${kwarg.get('name')}$ besó apasionadamente a <${kwarg.get('params')}$>... >w<",
+            "hug": f"<${kwarg.get('name')}$> abraza con mucho amor a <${kwarg.get('params')}$>... >w<",
+            "kiss": f"<${kwarg.get('name')}$> besó apasionadamente a <${kwarg.get('params')}$>... >w<",
             "trivia": "[CB]• - ̗̀ ❛Esta es la lista de categorias sobre el juego trivia.‘﹏!˚ • '\n\n\n*ૢ                         ── lυv мe\n╰► ﹫Geografía\n╰► ﹫Ciencia\n╰► ﹫General\n╰► ﹫Arte\n\n[C]➤ Uso: -trivia Geografía",
             "casarse": [
                 f"\t\tIglesia Ravnin.\n\n Hermanas y hermanos, estamos aquí reunidos para presenciar la boda de {kwarg.get('name')} y {kwarg.get('params')}. Si alguien se opone... Pues chinga su madre, no nos importa >:)",
@@ -168,8 +168,8 @@ def tr_rav(lenguaje, dato, **kwarg):
                 f"Mimindo com meu amado/a {kwarg.get('name')} uwu",
                 f"Te dou um chute dormindo {kwarg.get('name')}! :3"
             ],
-            "hug": f"<${kwarg.get('name')}$ abraça você com muito amor <${kwarg.get('params')}$>... >w<",
-            "kiss": f"<${kwarg.get('name')}$ Beijou pique kid bengala em <${kwarg.get('params')}$>... >w<",
+            "hug": f"<${kwarg.get('name')}$> abraça você com muito amor <${kwarg.get('params')}$>... >w<",
+            "kiss": f"<${kwarg.get('name')}$> Beijou pique kid bengala em <${kwarg.get('params')}$>... >w<",
             "trivia": "[CB]• - ̗̀ ❛Lista de categoria sobre o trivia.‘﹏!˚ • '\n\n\n*ૢ                         ── lυv мe\n╰► ﹫Geografía\n╰► ﹫Ciencia\n╰► ﹫General\n╰► ﹫Arte\n\n[C]➤ Uso: -trivia Geografía",
             "casarse": [
                 f"\t\tIglesia Ravnin.\n\n irmãos e irmãs, estamos aqui reunidos para presenciar a união de {kwarg.get('name')} e {kwarg.get('params')}. se alguém é contra... vai se ferrar, a gente não se importa >:)",
@@ -300,7 +300,7 @@ def tr_rav(lenguaje, dato, **kwarg):
                 f"pampering with my beloved/a {kwarg.get('name')} uwu",
                 f"A spanking and pampering {kwarg.get('name')}! :3"
             ],
-            "hug": f"<${kwarg.get('name')}$ embraces with much love <${kwarg.get('params')}$>... >w<",
+            "hug": f"<${kwarg.get('name')}$> embraces with much love <${kwarg.get('params')}$>... >w<",
             "kiss": f"<${kwarg.get('name')}$> passionately kissed <${kwarg.get('params')}$>... >w<",
             "trivia": "[CB]• - ̗̀ ❛This is the list of categories about the trivia game.‘﹏!˚ • '\n\n\n*ૢ                         ── drone\n╰► ﹫Geography\n╰► ﹫Math\n╰► ﹫General\n╰► ﹫Art\n\n[C]➤ Uso: -trivia Geography",
             "casarse": [

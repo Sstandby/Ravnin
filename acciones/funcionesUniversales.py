@@ -21,19 +21,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+try:
+  import aminofix
+  amino = aminofix
+except:
+  import amino
 
 import requests
 import re
 from datos import credenciales
 from mensajes import mensajesBot
-import amino
 from os import scandir, getcwd
 from os.path import abspath
 from io import BytesIO
 
-# Variables
 clienteAmino = amino.Client()
-
 correo = credenciales.Usuario.correo
 clave = credenciales.Usuario.clave
 _sid = credenciales.Usuario.sid
@@ -44,7 +46,6 @@ admins = [
 wikis = {}
 
 # Cliente Ravnin
-
 
 class ravnin:
     __slots__ = ("subclient", "chatId", "profileId", "author", "content",
@@ -176,7 +177,7 @@ def mensajeLogin():
        clienteAmino.login_sid(_sid)
     else:
        clienteAmino.login(correo, clave)
-       clienteAmino.new_headers["NDCAUTH"] = f"sid={clienteAmino.sid}"
+       #clienteAmino.new_headers["NDCAUTH"] = f"sid={clienteAmino.sid}"
 
 
 def pwd(ruta=getcwd()):
