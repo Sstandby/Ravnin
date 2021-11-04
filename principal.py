@@ -23,7 +23,11 @@ SOFTWARE.
 """
 
 import re
-import amino
+try:
+ import aminofix
+ amino = aminofix
+except:
+ import aminofix
 import time
 from threading import Timer
 from threading import Thread
