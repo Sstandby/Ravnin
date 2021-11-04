@@ -24,10 +24,10 @@ def tr_rav(lenguaje, dato, **kwarg):
             "gey": f"Eres un {kwarg.get('rgay')}. Grr 6w6",
             "coin": "OMG; Que suertudo eres!!! >w<",
             "nalgada": [
-                f"{kwarg.get('params')} le agarra fuertemente la colita a {kwarg.get('params')} uwu",
-                f"{kwarg.get('params')} agarra su mano y la lleva al otro mundo para llevarla a este... Y darle una tremenda nalgada a {kwarg.get('params')} >:3",
-                f"Que haces mi amooor {kwarg.get('params')}? *Le agarra una na       lgita* ve papasito'",
-                f"{kwarg.get('params')} le da una nalgada a {kwarg.get('params')} y se va corriendo o.o",
+                f"{kwarg.get('name')} le agarra fuertemente la colita a {kwarg.get('params')} uwu",
+                f"{kwarg.get('name')} agarra su mano y la lleva al otro mundo para llevarla a este... Y darle una tremenda nalgada a {kwarg.get('params')} >:3",
+                f"Que haces mi amooor {kwarg.get('name')}? *Le agarra una na       lgita* ve papasito'",
+                f"{kwarg.get('name')} le da una nalgada a {kwarg.get('params')} y se va corriendo o.o",
             ],
             "sleep": [
                 f"Hagamos la mimision, {kwarg.get('name')} -w-",
@@ -156,10 +156,10 @@ def tr_rav(lenguaje, dato, **kwarg):
             "gey": f"Teste feito pelo ratin {kwarg.get('rgay')}. ihhhh 6w6",
             "coin": "OMG; Que sortudo!!!! >w<",
             "nalgada": [
-                f"{kwarg.get('params')} agarra com força a cabeça de {kwarg.get('params')}",
-                f"{kwarg.get('params')} casa-se com ele, vivem 10 anos felizes e o espanca {kwarg.get('params')} >:3",
+                f"{kwarg.get('nalgada')} agarra com força a cabeça de {kwarg.get('params')}",
+                f"{kwarg.get('nalgada')} casa-se com ele, vivem 10 anos felizes e o espanca {kwarg.get('params')} >:3",
                 f"O que está fazendo meu amor? {kwarg.get('params')}? *sobe no seu colo* papai @-@",
-                f"{kwarg.get('params')} Dá uma bicuda em {kwarg.get('params')} e sai correndo o.o",
+                f"{kwarg.get('nalgada')} Dá uma bicuda em {kwarg.get('params')} e sai correndo o.o",
             ],
             "sleep": [
                 f"Vamos dormir juntinhos? {kwarg.get('name')} -w-",
@@ -288,10 +288,10 @@ def tr_rav(lenguaje, dato, **kwarg):
             "gey": f"You are  a {kwarg.get('rgay')} gay. WARWRRRRRRRR",
             "coin": "OMG; How lucky you are !!!",
             "nalgada": [
-                f"{kwarg.get('name')}  grabs tightly the tail of {kwarg.get('params')}  uwu",
-                f"{kwarg.get('name')} grabs her hand and takes her to the other world to take her to this ... and give a tremendous spanking {kwarg.get('params')} >:3",
-                f"What are you doing {kwarg.get('params')}?   Grabs a butt  go daddy'",
-                f"{kwarg.get('name')}  he spanks {kwarg.get('params')} and runs off o.o",
+                f"{kwarg.get('nalgada')}  grabs tightly the tail of {kwarg.get('params')}  uwu",
+                f"{kwarg.get('nalgada')} grabs her hand and takes her to the other world to take her to this ... and give a tremendous spanking {kwarg.get('params')} >:3",
+                f"What are you doing {kwarg.get('nalgada')}?   Grabs a butt  go daddy'",
+                f"{kwarg.get('nalgada')}  he spanks {kwarg.get('params')} and runs off o.o",
             ],
             "sleep": [
                 f"Let's do the mimision, {kwarg.get('name')} -w-",
