@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2021 Standby 
+Copyright (c) 2021 Standby
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,12 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-try:
-  import aminofix
-  amino = aminofix
-except:
-  import amino
-
+import amino
 import requests
 import re
 from datos import credenciales
@@ -52,7 +47,7 @@ class ravnin:
                  "messageId", "params", "name", "comId", "admins", "replyToMessage")
 
     def __init__(self, data, subclient, params, replyToMessage=None):
-       
+
         self.subclient = subclient
         self.admins = admins
         self.replyToMessage = replyToMessage
@@ -126,9 +121,7 @@ class ravnin:
             mensajesBot.mensajeError(error)
         return result
 
-
 # guardar informacion sacada de las wikis (BASE DE DATOS DENTRO DE AMINO WTF)
-
 
 class wiki():
     def __init__(self, bienvenida, despedida, help):
@@ -162,7 +155,6 @@ class wiki():
         if self.mensajeAyuda is not self.mensajeAyuda_wiki:
             self.mensajeAyuda = self.mensajeAyuda_wiki
 
-
 def wiki_content(ide):
     subclient = amino.SubClient(comId="8150137", profile=clienteAmino.profile)
     wiki = subclient.get_wiki_info(wikiId=ide).json
@@ -170,16 +162,13 @@ def wiki_content(ide):
     wikis[ide] = result
     return result
 
-
 def mensajeLogin():
     mensajesBot.mensajeAutor()
     clienteAmino.login(correo, clave)
     #clienteAmino.new_headers["NDCAUTH"] = f"sid={clienteAmino.sid}"
 
-
 def pwd(ruta=getcwd()):
     return [abspath(arch.path) for arch in scandir(ruta) if arch.is_file()]
-
 
 def upload(url):
     link = requests.get(url)
