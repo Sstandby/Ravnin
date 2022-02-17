@@ -24,10 +24,10 @@ SOFTWARE.
 
 import re
 try:
- import aminofix
- amino = aminofix
+ import amino
+ amino = amino
 except:
- import aminofix
+ import amino
 import time
 from threading import Timer
 from threading import Thread
