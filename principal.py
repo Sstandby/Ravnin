@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2021 Standby 
+Copyright (c) 2021 Standby
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,7 @@ SOFTWARE.
 """
 
 import re
-try:
- import aminofix
- amino = aminofix
-except:
- import aminofix
+import amino
 import time
 from threading import Timer
 from threading import Thread
@@ -36,19 +32,16 @@ from acciones import funcionesAcciones
 from acciones import funcionesMensajes
 from mensajes import mensajesBot
 
-
 content = None
 activo = True
 ayuda = open("datos/wikis/ayuda.txt", "r").read()
 bienvenida = open("datos/wikis/bienvenida.txt", "r").read()
 despedida = open("datos/wikis/despedida.txt", "r").read()
 
-
 def parametros(l):
     return ' '.join(l)
 
 # Funcion de coins al donar
-
 
 @clienteAmino.event('on_chat_tip')
 def on_chat_tiip(data):
@@ -70,7 +63,6 @@ def on_chat_tiip(data):
     }
     subClient.send_message(**mensaje)
 
-
 # Funcion de bienvenida a los usuarios
 @clienteAmino.event('on_group_member_join')
 def on_group_member_join(data):
@@ -84,7 +76,6 @@ def on_group_member_join(data):
         }
         sub.send_message(**mensaje)
 
-
 # Funcion de despedida a los usuarios
 @clienteAmino.event('on_group_member_leave')
 def on_group_member_leave(data):
@@ -95,7 +86,6 @@ def on_group_member_leave(data):
             'chatId': data.message.chatId
         }
         sub.send_message(**mensaje)
-
 
 # Funcion para las acciones del bot
 @clienteAmino.event("on_text_message")
@@ -159,7 +149,6 @@ def on_command_text(data):
     comandos = Timer(0, commandos)
     comandos.start()
 
-
 @clienteAmino.event("on_text_message")
 def on_reply_message(data):
     def reply_message():
@@ -195,7 +184,6 @@ def on_reply_message(data):
     delete = Timer(0, reply_message)
     delete.start()
 
-
 @clienteAmino.event("on_text_message")
 def contenido(data):
 
@@ -213,7 +201,6 @@ def contenido(data):
 
     contenido_wiki = Thread(target=contenido)
     contenido_wiki.start()
-
 
 @clienteAmino.event("on_text_message")
 def on_admin_message(data):
@@ -254,7 +241,6 @@ def on_admin_message(data):
     admin_on = Timer(0, admin_message)
     admin_on.start()
 
-
 def join_community():
 
     community = clienteAmino.get_wall_comments(
@@ -280,12 +266,10 @@ def join_community():
             # print(Error)
             Id = None
 
-
 def loop():
     while True:
         join_community()
         time.sleep(10.0)
-
 
 # Principal
 if __name__ == "__main__":
