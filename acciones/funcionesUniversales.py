@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import amino
+import aminoCAT
 import requests
 import re
 from datos import credenciales
@@ -30,7 +30,7 @@ from os import scandir, getcwd
 from os.path import abspath
 from io import BytesIO
 
-clienteAmino = amino.Client()
+clienteAmino = aminoCAT.Client()
 correo = credenciales.Usuario.correo
 clave = credenciales.Usuario.clave
 
@@ -156,7 +156,7 @@ class wiki():
             self.mensajeAyuda = self.mensajeAyuda_wiki
 
 def wiki_content(ide):
-    subclient = amino.SubClient(comId="8150137", profile=clienteAmino.profile)
+    subclient = aminoCAT.SubClient(comId="8150137", profile=clienteAmino.profile)
     wiki = subclient.get_wiki_info(wikiId=ide).json
     result = wiki["item"]["content"]
     wikis[ide] = result
