@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-import aminoCAT
+import aminofix
 import requests
 import re
 from datos import credenciales
@@ -30,7 +30,7 @@ from os import scandir, getcwd
 from os.path import abspath
 from io import BytesIO
 
-clienteAmino = aminoCAT.Client()
+clienteAmino = aminofix.Client()
 correo = credenciales.Usuario.correo
 clave = credenciales.Usuario.clave
 
