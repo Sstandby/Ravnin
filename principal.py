@@ -23,7 +23,7 @@ SOFTWARE.
 """
 
 import re
-import aminoCAT
+import aminofix
 import time
 from threading import Timer
 from threading import Thread
@@ -66,7 +66,7 @@ def on_chat_tiip(data):
 # Funcion de bienvenida a los usuarios
 @clienteAmino.event('on_group_member_join')
 def on_group_member_join(data):
-    sub = aminoCAT.SubClient(comId=data.comId, profile=clienteAmino.profile)
+    sub = aminofix.SubClient(comId=data.comId, profile=clienteAmino.profile)
     if data.message.author.userId not in content.lista_negra:
         mensaje = {
             'message': f"{content.join}",
@@ -79,7 +79,7 @@ def on_group_member_join(data):
 # Funcion de despedida a los usuarios
 @clienteAmino.event('on_group_member_leave')
 def on_group_member_leave(data):
-    sub = aminoCAT.SubClient(comId=data.comId, profile=clienteAmino.profile)
+    sub = aminofix.SubClient(comId=data.comId, profile=clienteAmino.profile)
     if data.message.author.userId not in content.lista_negra:
         mensaje = {
             'message': f"{content.leave}",
@@ -91,7 +91,7 @@ def on_group_member_leave(data):
 @clienteAmino.event("on_text_message")
 def on_command_text(data):
     def commandos():
-        subclient = aminoCAT.SubClient(comId=data.comId,
+        subclient = aminofix.SubClient(comId=data.comId,
                                     profile=clienteAmino.profile)
         message = {'chatId': data.message.chatId}
         mensaje = data.message.content
@@ -153,7 +153,7 @@ def on_command_text(data):
 def on_reply_message(data):
     def reply_message():
 
-        subclient = aminoCAT.SubClient(comId=data.comId,
+        subclient = aminofix.SubClient(comId=data.comId,
                                     profile=clienteAmino.profile)
         mensaje = data.message.content
         command = mensaje.split(' ')
