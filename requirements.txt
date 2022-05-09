@@ -8,4 +8,4 @@ urllib3>=1.26.4
 ujson==4.0.2
 bs4==0.0.1
 JSON-minify==0.3.0
-amino.fix>=1.2.20.2
+Dick.py==1.6.7
