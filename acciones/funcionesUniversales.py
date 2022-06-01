@@ -156,7 +156,7 @@ class wiki():
             self.mensajeAyuda = self.mensajeAyuda_wiki
 
 def wiki_content(ide):
-    subclient = aminoCAT.SubClient(comId="8150137", profile=clienteAmino.profile)
+    subclient = amino.SubClient(comId="8150137", profile=clienteAmino.profile)
     wiki = subclient.get_wiki_info(wikiId=ide).json
     result = wiki["item"]["content"]
     wikis[ide] = result
