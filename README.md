@@ -51,8 +51,8 @@ Si quiere que el proyecto mejore comparta esto con mas personas para que puedan 
 
 
 ## By Sie 
-Ravnin ahora nesesita que uses sid para heroku no obstante, cuando se acabé tiempo de sid tendras que sacarlo de nuevo ya puedes tenerlo 24/7 en Heroku.
-Si tiene algún error o algo de modificación digamelo en mi discord Sie#1205.
+Ravnin ahora nesesita que uses sid para heroku no obstante, cuando se acabé tiempo de sid tendras que sacarlo de nuevo ya puedes tenerla 24/7 en Heroku.
+Si tiene algún error o algo de modificación digamelo en mi discord Sie#1205
 
 Si usas a ravnin recuerda darle los créditos necesarios a este proyecto para que cada día sigamos mejorando. 
 
