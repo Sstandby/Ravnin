@@ -26,6 +26,6 @@ SOFTWARE.
 
 class Usuario:
 
-   correo = "botravnin@gmail.com" 
-   clave = "Contraseña"
-   sid = "Coloca tu sid"
+    correo = "" # Example: "correo@gmail.com"
+    clave = "" # Example: "contraseña"
+    #sid = None # Example: "AnsiEXAMPLE......" Use the SID, in case you want to use heroku
